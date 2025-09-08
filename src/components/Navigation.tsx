@@ -16,7 +16,7 @@ const Navigation: React.FC = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#hero' },
+    //{ name: 'Home', href: '#hero' },
     { name: 'About', href: '#about' },
     { name: 'Team', href: '#team' },
     { name: 'Contact', href: '#contact' },
@@ -45,7 +45,8 @@ const Navigation: React.FC = () => {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
+            onClick={() => scrollToSection('#hero')}
+            className="flex items-center space-x-2 cursor-pointer"
           >
             <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center">
               <span className="text-white font-bold text-lg">OSW</span>
