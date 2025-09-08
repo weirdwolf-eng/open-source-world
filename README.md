@@ -130,7 +130,6 @@ You can customize:
 ## 📞 Contact
 
 - **Email**: opensourceworld.fyi@gmail.com
-- **GitHub**: [oathar/open-source-world](https://github.com/theopensourceworld/open-source-world)
 - **Website**: Coming soon!
 
 ## 📄 License
