@@ -13,6 +13,7 @@ import {
   FaPaperPlane,
   FaCheckCircle
 } from 'react-icons/fa';
+import { itemVariants, containerVariants } from '../../utils/animations';
 
 const ContactSection: React.FC = () => {
   const ref = useRef(null);
@@ -33,53 +34,33 @@ const ContactSection: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
+  // Using properly typed variants from utils
 
   const socialLinks = [
     {
       name: 'GitHub',
-      icon: <FaGithub size={24} />,
+      icon: FaGithub,
       url: 'https://github.com/oathar/open-source-world',
       color: 'hover:bg-gray-800',
       description: 'Contribute to our projects'
     },
     {
       name: 'LinkedIn',
-      icon: <FaLinkedin size={24} />,
+      icon: FaLinkedin,
       url: 'https://linkedin.com/company/open-source-world',
       color: 'hover:bg-blue-600',
       description: 'Professional network'
     },
     {
       name: 'Twitter',
-      icon: <FaTwitter size={24} />,
+      icon: FaTwitter,
       url: 'https://twitter.com/opensourceworld',
       color: 'hover:bg-blue-400',
       description: 'Latest updates'
     },
     {
       name: 'YouTube',
-      icon: <FaYoutube size={24} />,
+      icon: FaYoutube,
       url: 'https://youtube.com/@opensourceworld',
       color: 'hover:bg-red-600',
       description: 'Tutorials & talks'
@@ -330,7 +311,7 @@ const ContactSection: React.FC = () => {
                     >
                       <div className="flex flex-col items-center space-y-2">
                         <div className="text-secondary-700 group-hover:text-white transition-colors">
-                          {social.icon}
+                          <social.icon size={24} />
                         </div>
                         <div>
                           <p className="font-semibold text-secondary-900 group-hover:text-white transition-colors">

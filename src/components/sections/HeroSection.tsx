@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaRocket, FaUsers, FaGlobe } from 'react-icons/fa';
+import { itemVariants, containerVariants } from '../../utils/animations';
 
 const HeroSection: React.FC = () => {
   const scrollToSection = (href: string) => {
@@ -10,28 +11,7 @@ const HeroSection: React.FC = () => {
     }
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
+  // Using properly typed variants from utils
 
   return (
     <section 

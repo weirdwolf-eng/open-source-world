@@ -3,32 +3,13 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import { itemVariants, containerVariants } from '../../utils/animations';
 
 const TeamSection: React.FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
+  // Using properly typed variants from utils
 
   // Sample team members - you can replace with actual team data
   const teamMembers = [

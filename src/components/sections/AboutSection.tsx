@@ -3,46 +3,27 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FaCode, FaUsers, FaGlobe, FaHeart, FaMountain, FaHandshake } from 'react-icons/fa';
+import { itemVariants, containerVariants } from '../../utils/animations';
 
 const AboutSection: React.FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
+  // Using properly typed variants from utils
 
   const features = [
     {
-      icon: <FaCode />,
+      icon: FaCode,
       title: "Open Source First",
       description: "We believe in the power of open source software to drive innovation and collaboration across the globe."
     },
     {
-      icon: <FaUsers />,
+      icon: FaUsers,
       title: "Global Community",
       description: "Connect with developers, designers, and tech enthusiasts from every corner of the world."
     },
     {
-      icon: <FaGlobe />,
+      icon: FaGlobe,
       title: "Worldwide Impact",
       description: "Our projects and initiatives span across continents, making a real difference in communities everywhere."
     }
@@ -50,17 +31,17 @@ const AboutSection: React.FC = () => {
 
   const oskFeatures = [
     {
-      icon: <FaMountain />,
+      icon: FaMountain,
       title: "Kashmir Focus",
       description: "Dedicated to promoting open source culture and development opportunities in the Kashmir region."
     },
     {
-      icon: <FaHandshake />,
+      icon: FaHandshake,
       title: "Local Partnerships",
       description: "Building strong relationships with local institutions, universities, and tech communities."
     },
     {
-      icon: <FaHeart />,
+      icon: FaHeart,
       title: "Community Support",
       description: "Providing mentorship, resources, and opportunities for local developers to thrive."
     }
@@ -94,7 +75,7 @@ const AboutSection: React.FC = () => {
                 className="card p-8 text-center group"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white text-2xl group-hover:shadow-xl transition-all duration-300">
-                  {feature.icon}
+                  <feature.icon />
                 </div>
                 <h3 className="text-2xl font-bold text-secondary-900 mb-4">{feature.title}</h3>
                 <p className="text-secondary-600 leading-relaxed">{feature.description}</p>
@@ -122,7 +103,7 @@ const AboutSection: React.FC = () => {
                   className="text-center group"
                 >
                   <div className="w-14 h-14 bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl flex items-center justify-center mx-auto mb-4 text-primary-600 text-xl group-hover:shadow-lg transition-all duration-300">
-                    {feature.icon}
+                    <feature.icon />
                   </div>
                   <h4 className="text-xl font-bold text-secondary-900 mb-3">{feature.title}</h4>
                   <p className="text-secondary-600 text-sm leading-relaxed">{feature.description}</p>

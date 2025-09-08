@@ -3,32 +3,13 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FaRocket, FaUsers, FaCode, FaArrowRight } from 'react-icons/fa';
+import { itemVariants, containerVariants } from '../../utils/animations';
 
 const CTABanner: React.FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
+  // Using properly typed variants from utils
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -39,19 +20,19 @@ const CTABanner: React.FC = () => {
 
   const ctaOptions = [
     {
-      icon: <FaCode />,
+      icon: FaCode,
       title: "Contribute",
       description: "Start contributing to open source projects",
       action: () => window.open('https://github.com/oathar/open-source-world', '_blank')
     },
     {
-      icon: <FaUsers />,
+      icon: FaUsers,
       title: "Join Community",
       description: "Connect with like-minded developers",
       action: () => scrollToSection('#contact')
     },
     {
-      icon: <FaRocket />,
+      icon: FaRocket,
       title: "Get Updates",
       description: "Stay informed about new opportunities",
       action: () => scrollToSection('#contact')
@@ -154,7 +135,7 @@ const CTABanner: React.FC = () => {
                   >
                     <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-colors">
                       <div className="text-white text-xl">
-                        {option.icon}
+                        <option.icon />
                       </div>
                     </div>
                     <h3 className="text-lg font-bold mb-2">{option.title}</h3>

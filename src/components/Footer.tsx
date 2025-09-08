@@ -38,10 +38,10 @@ const Footer: React.FC = () => {
   };
 
   const socialLinks = [
-    { name: 'GitHub', icon: <FaGithub size={20} />, href: 'https://github.com/oathar/open-source-world' },
-    { name: 'LinkedIn', icon: <FaLinkedin size={20} />, href: 'https://linkedin.com/company/open-source-world' },
-    { name: 'Twitter', icon: <FaTwitter size={20} />, href: 'https://twitter.com/opensourceworld' },
-    { name: 'YouTube', icon: <FaYoutube size={20} />, href: 'https://youtube.com/@opensourceworld' }
+    { name: 'GitHub', icon: FaGithub, href: 'https://github.com/oathar/open-source-world' },
+    { name: 'LinkedIn', icon: FaLinkedin, href: 'https://linkedin.com/company/open-source-world' },
+    { name: 'Twitter', icon: FaTwitter, href: 'https://twitter.com/opensourceworld' },
+    { name: 'YouTube', icon: FaYoutube, href: 'https://youtube.com/@opensourceworld' }
   ];
 
   return (
@@ -96,7 +96,7 @@ const Footer: React.FC = () => {
                     whileHover={{ scale: 1.1, y: -2 }}
                     className="w-10 h-10 bg-white/10 hover:bg-primary-600 rounded-xl flex items-center justify-center transition-colors duration-300"
                   >
-                    {social.icon}
+                    <social.icon size={20} />
                   </motion.a>
                 ))}
               </div>
