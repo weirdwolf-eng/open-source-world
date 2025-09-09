@@ -259,15 +259,24 @@ const Footer: React.FC = () => {
               viewport={{ once: true }}
               className="flex items-center space-x-6 text-sm text-white/70"
             >
-              <a href="#" className="hover:text-primary-400 transition-colors">
+              <button 
+                onClick={() => window.open('/privacy-policy', '_blank')}
+                className="hover:text-primary-400 transition-colors text-left"
+              >
                 Privacy Policy
-              </a>
-              <a href="#" className="hover:text-primary-400 transition-colors">
+              </button>
+              <button 
+                onClick={() => window.open('/terms-of-service', '_blank')}
+                className="hover:text-primary-400 transition-colors text-left"
+              >
                 Terms of Service
-              </a>
-              <a href="#" className="hover:text-primary-400 transition-colors">
+              </button>
+              <button 
+                onClick={() => window.open('/code-of-conduct', '_blank')}
+                className="hover:text-primary-400 transition-colors text-left"
+              >
                 Code of Conduct
-              </a>
+              </button>
             </motion.div>
           </div>
         </div>
