@@ -258,7 +258,7 @@ const ContactSection: React.FC = () => {
             </motion.div>
 
             {/* Contact Info & Social Links */}
-            <motion.div variants={itemVariants} className="space-y-8">
+            <motion.div variants={itemVariants} className="flex flex-col gap-6">
               {/* Contact Info */}
               <div className="card p-8">
                 <h3 className="text-2xl font-bold text-secondary-900 mb-6">Contact Info</h3>
@@ -327,28 +327,28 @@ const ContactSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Newsletter Subscription */}
-              <div className="card p-8 bg-gradient-to-r from-primary-500 to-primary-600 text-white">
-                <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
-                <p className="mb-6 text-primary-100">
-                  Subscribe to our newsletter for the latest updates, opportunities, and open source insights.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="flex-1 px-4 py-3 rounded-xl text-secondary-900 focus:outline-none focus:ring-2 focus:ring-white"
-                  />
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-white text-primary-600 font-semibold px-6 py-3 rounded-xl hover:bg-primary-50 transition-colors"
-                  >
-                    Subscribe
-                  </motion.button>
-                </div>
-              </div>
-            </motion.div>
+               {/* Newsletter Subscription */}
+  <div className="card p-8 bg-gradient-to-r from-primary-500 to-primary-600 text-white">
+    <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
+    <p className="mb-6 text-primary-100">
+      Subscribe to our newsletter for the latest updates, opportunities, and open source insights.
+    </p>
+    <div className="flex flex-col sm:flex-row gap-3">
+      <input
+        type="email"
+        placeholder="Enter your email"
+        className="flex-1 px-4 py-3 rounded-xl text-secondary-900 focus:outline-none focus:ring-2 focus:ring-white min-h-[50px]"
+      />
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="bg-white text-primary-600 font-semibold px-6 py-3 rounded-xl hover:bg-primary-50 transition-colors h-[50px]"
+      >
+        Subscribe
+      </motion.button>
+    </div>
+  </div>
+  </motion.div>
           </div>
         </motion.div>
       </div>
