@@ -41,7 +41,7 @@ const ContactSection: React.FC = () => {
     {
       name: 'GitHub',
       icon: FaGithub,
-      url: 'https://github.com/oathar/open-source-world',
+      url: 'https://github.com/theopensourceworld',
       color: 'hover:bg-gray-800',
       description: 'Contribute to our projects'
     },
