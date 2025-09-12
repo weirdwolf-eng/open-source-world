@@ -40,7 +40,7 @@ const ContactSection: React.FC = () => {
     {
       name: 'GitHub',
       icon: FaGithub,
-      url: 'https://github.com/oathar/open-source-world',
+      url: 'https://github.com/theopensourceworld',
       color: 'hover:bg-gray-800',
       description: 'Contribute to our projects'
     },
@@ -269,7 +269,7 @@ const ContactSection: React.FC = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-secondary-900">Email</p>
-                      <p className="text-secondary-600">hello@opensource-world.org</p>
+                      <p className="text-secondary-600">opensourceworld.fyi@gmail.com</p>
                     </div>
                   </div>
                   
