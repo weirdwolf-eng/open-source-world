@@ -1,0 +1,4 @@
+### used context for theme toggle to be persitent on all pages
+    
+changed the bg for navigation , about ka background 
+
