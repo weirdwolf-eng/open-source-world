@@ -275,6 +275,8 @@ const ContactSection: React.FC = () => {
                     <div>
                       <p className={theme === 'light'? "font-semibold text-secondary-900": "font-semibold text-white"}>Email</p>
                       <p className={theme === 'light'? "text-secondary-600": "text-gray-200"}>hello@opensource-world.org</p>
+                      <p className="font-semibold text-secondary-900">Email</p>
+                      <p className="text-secondary-600">opensourceworld.fyi@gmail.com</p>
                     </div>
                   </div>
                   
