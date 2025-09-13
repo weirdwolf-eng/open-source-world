@@ -40,38 +40,16 @@ const Navigation: React.FC = () => {
   };
 
   return (
-    //   <motion.nav
-    //     initial={{ y: -100 }}
-    //     animate={{ y: 0 }}
-    // //     className={`fixed top-0 w-full z-50 transition-all duration-300 ${ 
-    // //       //original code
-    // //       // isScrolled 
-    // //       //   ? 'bg-white/95 backdrop-blur-md shadow-lg' 
-    // //       //   : 'bg-transparent'
-    //          theme === "dark"
-    //     ? "bg-black text-white"
-    //     : isScrolled
-    //       ? "bg-white/95 backdrop-blur-md shadow-lg"
-    //       : "bg-transparent"
-    //     }`}
-    //   >
 
+    <motion.nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
+          ? theme === "light"
+            ? "bg-white/95 backdrop-blur-md shadow-lg text-gray-400"
+            : "bg-[#939395]"
+          : ""
+        }`}
+    >
 
-    // <motion.nav
-    //   className={`fixed top-0 w-full z-50 transition-all duration-300 ${theme === "dark"
-    //       ? "bg-black text-white"
-    //       : isScrolled
-    //         ? "bg-white/95 backdrop-blur-md shadow-lg text-gray-400"
-    //         : "bg-transparent"
-    //     }`}
-    // >
-<motion.nav
-  className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-    isScrolled
-      ? "bg-white/95 backdrop-blur-md shadow-lg text-gray-400"
-      : "bg-transparent"
-  }`}
->
 
 
       <div className="container-max">
@@ -85,9 +63,8 @@ const Navigation: React.FC = () => {
             <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center">
               <span className="text-white font-bold text-lg">OSW</span>
             </div>
-           <span className={`font-bold text-xl transition-colors ${
-              isScrolled ? 'text-secondary-900' : 'text-white'
-            }`}>
+            <span className={`font-bold text-xl transition-colors ${isScrolled ? 'text-secondary-900' : 'text-white'
+              }`}>
               Open Source World
             </span>
 
@@ -101,8 +78,8 @@ const Navigation: React.FC = () => {
                 whileHover={{ y: -2 }}
                 onClick={() => scrollToSection(item.href)}
                 className={`font-medium transition-colors ${isScrolled
-                    ? 'text-secondary-700 hover:text-primary-600'
-                    : 'text-white/90 hover:text-white'
+                  ? 'text-secondary-700 hover:text-primary-600'
+                  : 'text-white/90 hover:text-white'
                   }`}
               >
                 {item.name}
@@ -110,8 +87,8 @@ const Navigation: React.FC = () => {
             ))}
             {/* Theme Toggle */}
             <button onClick={toggleTheme}>
-  {theme === "light" ? "Dark Mode" : "Light Mode"}
-</button>
+              {theme === "light" ? "Dark Mode" : "Light Mode"}
+            </button>
 
             <motion.button
               whileHover={{ scale: 1.05 }}
