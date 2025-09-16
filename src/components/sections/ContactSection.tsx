@@ -230,7 +230,7 @@ const ContactSection: React.FC = () => {
                           errors.message ? 'border-red-300' : 'border-gray-200'
                         }`}
                         placeholder="Tell us about your project, questions, or how you'd like to contribute..."
-                      />
+                      />for
                       {errors.message && (
                         <p className="mt-2 text-sm text-red-600">{errors.message}</p>
                       )}
@@ -269,19 +269,19 @@ const ContactSection: React.FC = () => {
                 <h3 className={theme === 'light'? "text-2xl font-bold text-secondary-900 mb-6": "text-2xl font-bold text-white mb-6"}>Contact Info</h3>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center">
                       <FaEnvelope className="text-primary-600" />
                     </div>
                     <div>
+                      {/* <p className={theme === 'light'? "font-semibold text-secondary-900": "font-semibold text-white"}>Email</p>
+                      <p className={theme === 'light'? "text-secondary-600": "text-gray-200"}>hello@opensource-world.org</p> */}
                       <p className={theme === 'light'? "font-semibold text-secondary-900": "font-semibold text-white"}>Email</p>
-                      <p className={theme === 'light'? "text-secondary-600": "text-gray-200"}>hello@opensource-world.org</p>
-                      <p className="font-semibold text-secondary-900">Email</p>
-                      <p className="text-secondary-600">opensourceworld.fyi@gmail.com</p>
+                      <p className={theme === 'light'? "text-secondary-600": "text-gray-200"}>opensourceworld.fyi@gmail.com</p>
                     </div>
                   </div>
                   
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center">
                       <FaMapMarkerAlt className="text-primary-600" />
                     </div>
                     <div>
@@ -291,7 +291,7 @@ const ContactSection: React.FC = () => {
                   </div>
 
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center">
                       <FaPhone className="text-primary-600" />
                     </div>
                     <div>
@@ -317,7 +317,7 @@ const ContactSection: React.FC = () => {
                       className={`p-4 rounded-2xl border-2 border-gray-100 hover:border-primary-200 transition-all duration-300 text-center group ${social.color}`}
                     >
                       <div className="flex flex-col items-center space-y-2">
-                        <div className={theme === 'light'? "w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-2 text-primary-600 group-hover:bg-white transition-colors": "w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-2 text-primary-600 group-hover:bg-gray-200 transition-colors"}>
+                        <div className={theme === 'light'? "w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center mb-2 text-primary-600 group-hover:bg-white transition-colors": "w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center mb-2 text-primary-600 group-hover:bg-gray-200 transition-colors"}>
                           <social.icon size={24} />
                         </div>
                         <div>
@@ -336,8 +336,8 @@ const ContactSection: React.FC = () => {
 
                {/* Newsletter Subscription */}
   <div className="card p-8 bg-gradient-to-r from-primary-500 to-primary-600 text-white">
-    <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
-    <p className="mb-6 text-primary-100">
+                <h3 className={theme === 'light' ? "text-2xl font-bold text-secondary-900 mb-6" : "text-2xl font-bold text-white mb-6"}>Stay Updated</h3>
+    <p className="mb-6 text-primary-600">
       Subscribe to our newsletter for the latest updates, opportunities, and open source insights.
     </p>
     <div className="flex flex-col sm:flex-row gap-3">
@@ -346,13 +346,14 @@ const ContactSection: React.FC = () => {
         placeholder="Enter your email"
         className="flex-1 px-4 py-3 rounded-xl text-secondary-900 focus:outline-none focus:ring-2 focus:ring-white min-h-[50px]"
       />
-      <motion.button
+     <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="bg-white text-primary-600 font-semibold px-6 py-3 rounded-xl hover:bg-primary-50 transition-colors h-[50px]"
+        className="bg-white text-[#073f70] font-semibold px-6 py-3 rounded-xl hover:bg-[#073f70] hover:text-white transition-colors h-[50px]"
       >
         Subscribe
       </motion.button>
+
     </div>
   </div>
   </motion.div>

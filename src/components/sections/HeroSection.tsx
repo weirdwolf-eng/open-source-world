@@ -4,6 +4,7 @@ import { FaGithub, FaRocket, FaUsers, FaGlobe } from 'react-icons/fa';
 import { itemVariants, containerVariants } from '../../utils/animations';
 import { ThemeProvider } from '../../context/ThemeContext';
 import { useTheme } from '../../context/ThemeContext';
+
 const HeroSection: React.FC = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -12,12 +13,17 @@ const HeroSection: React.FC = () => {
     }
   };
 
-  // Using properly typed variants from utils
   const {theme, toggleTheme} = useTheme();
+
+  // Blue gradient hero background
+  const heroBackgroundStyle = theme === 'light' 
+    ? 'min-h-screen relative overflow-hidden flex items-center bg-gradient-to-br from-[#073f70] to-[#1f84d6]'
+    : 'min-h-screen relative overflow-hidden flex items-center bg-gradient-to-br from-[#0a0e14] to-[#1a2332]';
+
   return (
     <section 
       id="hero" 
-      className="min-h-screen relative overflow-hidden gradient-bg flex items-center"
+      className={heroBackgroundStyle}
     >
       {/* Background Animation */}
       <div className="absolute inset-0">
@@ -89,7 +95,7 @@ const HeroSection: React.FC = () => {
           <motion.div
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
-            className={theme === 'light' ? "w-24 h-24 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-lg cursor-pointer" : "hidden"}
+            className="w-24 h-24 bg-gradient-to-br from-[#3b9df0] to-[#1f84d6] rounded-xl flex items-center justify-center mx-auto mb-6 shadow-lg cursor-pointer"
           >
             <FaGlobe size={64} className="text-white" />
           </motion.div>
@@ -101,7 +107,7 @@ const HeroSection: React.FC = () => {
           >
             Open Source
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-green-200">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#e8f4fd]">
               World
             </span>
           </motion.h1>
@@ -121,15 +127,15 @@ const HeroSection: React.FC = () => {
             className="flex flex-wrap justify-center gap-6 sm:gap-8 mb-12"
           >
             <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-2xl px-4 py-2">
-              <FaUsers className="text-green-200" />
+              <FaUsers className="text-[#e8f4fd]" />
               <span className="font-semibold">500+ Contributors</span>
             </div>
             <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-2xl px-4 py-2">
-              <FaGithub className="text-green-200" />
+              <FaGithub className="text-[#e8f4fd]" />
               <span className="font-semibold">100+ Projects</span>
             </div>
             <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-2xl px-4 py-2">
-              <FaRocket className="text-green-200" />
+              <FaRocket className="text-[#e8f4fd]" />
               <span className="font-semibold">50+ Countries</span>
             </div>
           </motion.div>
@@ -143,7 +149,16 @@ const HeroSection: React.FC = () => {
               whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.2)" }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('#about')}
-              className="bg-white text-primary-600 hover:bg-gray-100 font-bold py-4 px-8 rounded-2xl transition-all duration-300 shadow-xl text-lg "
+              className="
+                    bg-white text-[#073f70] 
+                    hover:bg-[#e8f4fd] hover:text-[#073f70] 
+
+                    dark:bg-[#073f70] dark:text-white 
+                    dark:hover:bg-[#1f84d6] dark:hover:text-white 
+
+                    font-bold py-4 px-8 rounded-2xl 
+                    transition-all duration-300 shadow-xl text-lg
+                  "
             >
               Learn More
             </motion.button>
@@ -151,7 +166,11 @@ const HeroSection: React.FC = () => {
               whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(255,255,255,0.2)" }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('#contact')}
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-600 font-bold py-4 px-8 rounded-2xl transition-all duration-300 text-lg"
+              className={`bg-transparent border-2 border-white text-white 
+              hover:bg-white hover:text-[#073f70] 
+              font-bold py-4 px-8 rounded-2xl transition-all duration-300 text-lg
+              ${theme === 'dark' ? 'border-blue-100 text-blue-900 hover:bg-[#041f3d] hover:text-[#041f3d]' : ''}
+            `}
             >
               Join Community
             </motion.button>
