@@ -67,7 +67,7 @@ const Navigation: React.FC = () => {
             </div>
 
             <span className={`font-bold text-xl transition-colors ${
-                isScrolled ? 'text-gray-200' : 'text-white'
+                isScrolled ? 'text-gray-900' : 'text-white'
               }`}>
                 Open Source World
             </span>
