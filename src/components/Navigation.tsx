@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { Sun, MoonIcon, SunDim, Moon } from 'lucide-react';
+
 
 
 
 
 import '../index.css'
-import { P } from 'framer-motion/dist/types.d-Cjd591yU';
 import { useTheme } from '../context/ThemeContext';
 const Navigation: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,12 +43,13 @@ const Navigation: React.FC = () => {
   return (
 
     <motion.nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled
           ? theme === "light"
-            ? "bg-white/95 backdrop-blur-md shadow-lg text-gray-400"
-            : "bg-[#939395]"
+            ? "bg-white/90 backdrop-blur-md shadow-md text-gray-700"
+            : "bg-[#0e3a63]/90 backdrop-blur-md shadow-md text-[#dbeeff]"
           : ""
-        }`}
+      }`}
     >
 
 
@@ -60,12 +62,14 @@ const Navigation: React.FC = () => {
             onClick={() => scrollToSection('#hero')}
             className="flex items-center space-x-2 cursor-pointer"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#073f70] to-[#1f84d6]">
               <span className="text-white font-bold text-lg">OSW</span>
             </div>
-            <span className={`font-bold text-xl transition-colors ${isScrolled ? 'text-secondary-900' : 'text-white'
+
+            <span className={`font-bold text-xl transition-colors ${
+                isScrolled ? 'text-gray-900' : 'text-white'
               }`}>
-              Open Source World
+                Open Source World
             </span>
 
           </motion.div>
@@ -86,15 +90,20 @@ const Navigation: React.FC = () => {
               </motion.button>
             ))}
             {/* Theme Toggle */}
-            <button onClick={toggleTheme}>
-              {theme === "light" ? "Dark Mode" : "Light Mode"}
+            <button onClick={toggleTheme} aria-label="Toggle theme">
+              {theme === "light" ? (
+                <Moon size={24} color="#a7acb5ff" />   // gray-500 hex for light mode
+              ) : (
+                <Sun size={24} color="#ffffff" />    // white for dark mode
+              )}
             </button>
+
 
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('#contact')}
-              className={`btn-primary ${!isScrolled ? 'bg-white text-primary-600 hover:bg-gray-100' : ''
+              className={`btn-primary ${!isScrolled ? 'bg-white text-primary-300 hover:bg-gray-100' : ''
                 }`}
             >
               Get Involved

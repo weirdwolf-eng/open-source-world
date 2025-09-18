@@ -49,7 +49,7 @@ const CTABanner: React.FC = () => {
           className="relative overflow-hidden"
         >
           {/* Main CTA Banner */}
-          <div className="relative bg-gradient-to-r from-primary-600 via-primary-700 to-green-600 rounded-3xl p-12 lg:p-16 text-white overflow-hidden">
+          <div className="relative bg-gradient-to-r from-[#073f70] via-[#073f70] to-[#1f84d6] rounded-3xl p-12 lg:p-16 text-white overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10">
               <motion.div
