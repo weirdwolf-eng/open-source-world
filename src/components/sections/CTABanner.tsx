@@ -5,12 +5,12 @@ import { useRef } from 'react';
 import { FaRocket, FaUsers, FaCode, FaArrowRight } from 'react-icons/fa';
 import { itemVariants, containerVariants } from '../../utils/animations';
 import { useTheme } from '../../context/ThemeContext';
+
 const CTABanner: React.FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const { theme } = useTheme();
 
-  // Using properly typed variants from utils
-   const { theme, toggleTheme } = useTheme();
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -40,8 +40,8 @@ const CTABanner: React.FC = () => {
   ];
 
   return (
-    <section className={theme === 'light' ? "py-16 bg-gray-50" : "py-16 dark: darkbg"}>
-      <div className="container-max" ref={ref}>
+    <section className={theme === 'light' ? "py-12 sm:py-16 bg-gray-50" : "py-12 sm:py-16 dark: darkbg"}>
+      <div className="container-max px-4" ref={ref}>
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -49,7 +49,7 @@ const CTABanner: React.FC = () => {
           className="relative overflow-hidden"
         >
           {/* Main CTA Banner */}
-          <div className="relative bg-gradient-to-r from-[#073f70] via-[#073f70] to-[#1f84d6] rounded-3xl p-12 lg:p-16 text-white overflow-hidden">
+          <div className="relative bg-gradient-to-r from-[#073f70] via-[#073f70] to-[#1f84d6] rounded-3xl p-6 sm:p-10 lg:p-16 text-white overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10">
               <motion.div
@@ -71,29 +71,28 @@ const CTABanner: React.FC = () => {
 
             <div className="relative z-10 text-center">
               <motion.div
-
                 variants={itemVariants}
-                className={theme === 'light' ? "mb-8" : "mb-8 dark:darkbg"}
+                className="mb-6 sm:mb-8"
               >
                 <motion.div
                   animate={{ rotate: [0, 10, -10, 0] }}
                   transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                  className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mx-auto mb-6"
+                  className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6"
                 >
-                  <FaRocket size={40} className="text-white" />
+                  <FaRocket size={32} className="text-white sm:w-10 sm:h-10" />
                 </motion.div>
               </motion.div>
 
               <motion.h2
                 variants={itemVariants}
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight"
+                className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight px-4"
               >
                 Ready to Change the World?
               </motion.h2>
 
               <motion.p
                 variants={itemVariants}
-                className="text-xl lg:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed"
+                className="text-base sm:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-4"
               >
                 Join thousands of developers, designers, and innovators who are building 
                 the future through open source collaboration. Your journey starts here.
@@ -101,13 +100,13 @@ const CTABanner: React.FC = () => {
 
               <motion.div
                 variants={itemVariants}
-                className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+                className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-4"
               >
                 <motion.button
                   whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.2)" }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => scrollToSection('#contact')}
-                  className="bg-white text-primary-600 hover:bg-primary-50 font-bold py-4 px-8 rounded-2xl transition-all duration-300 shadow-xl text-lg flex items-center space-x-2"
+                  className="w-full sm:w-auto bg-white text-primary-600 hover:bg-primary-50 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl transition-all duration-300 shadow-xl text-base sm:text-lg flex items-center justify-center space-x-2 min-h-[48px]"
                 >
                   <span>Get Started Now</span>
                   <FaArrowRight />
@@ -116,7 +115,7 @@ const CTABanner: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => window.open('https://github.com/oathar/open-source-world', '_blank')}
-                  className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-600 font-bold py-4 px-8 rounded-2xl transition-all duration-300 text-lg"
+                  className="w-full sm:w-auto bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-600 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl transition-all duration-300 text-base sm:text-lg min-h-[48px]"
                 >
                   View Projects
                 </motion.button>
@@ -125,22 +124,22 @@ const CTABanner: React.FC = () => {
               {/* Quick Action Cards */}
               <motion.div
                 variants={itemVariants}
-                className="grid grid-cols-1 md:grid-cols-3 gap-6"
+                className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6"
               >
                 {ctaOptions.map((option, index) => (
                   <motion.div
                     key={index}
                     whileHover={{ y: -5, scale: 1.02 }}
                     onClick={option.action}
-                    className="bg-white/10 backdrop-blur-md rounded-2xl p-6 cursor-pointer group transition-all duration-300 hover:bg-white/20"
+                    className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 cursor-pointer group transition-all duration-300 hover:bg-white/20 min-h-[120px]"
                   >
-                    <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-white/30 transition-colors">
-                      <div className="text-white text-xl">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-white/30 transition-colors">
+                      <div className="text-white text-lg sm:text-xl">
                         <option.icon />
                       </div>
                     </div>
-                    <h3 className="text-lg font-bold mb-2">{option.title}</h3>
-                    <p className="text-white/80 text-sm">{option.description}</p>
+                    <h3 className="text-base sm:text-lg font-bold mb-1 sm:mb-2">{option.title}</h3>
+                    <p className="text-white/80 text-xs sm:text-sm">{option.description}</p>
                   </motion.div>
                 ))}
               </motion.div>
@@ -150,53 +149,52 @@ const CTABanner: React.FC = () => {
           {/* Stats Banner */}
           <motion.div
             variants={itemVariants}
-            className={theme === 'light' ? "mt-12 bg-white rounded-3xl p-8 shadow-xl border border-gray-100" : "mt-12 bg-[#444b4a] rounded-3xl p-8 shadow-xl bg-[#444b4a]"}
+            className={theme === 'light' ? "mt-8 sm:mt-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-gray-100" : "mt-8 sm:mt-12 bg-[#444b4a] rounded-3xl p-6 sm:p-8 shadow-xl"}
           >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 text-center">
               <div>
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={isInView ? { scale: 1 } : { scale: 0 }}
                   transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                  className={theme === 'light' ? "text-3xl font-bold text-primary-600 mb-2" : "text-3xl font-bold text-white mb-2"}
-                  >
+                  className={theme === 'light' ? "text-2xl sm:text-3xl font-bold text-primary-600 mb-1 sm:mb-2" : "text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2"}
+                >
                   500
                 </motion.div>
-                <p className={theme === 'light'? "text-secondary-600 font-medium": "text-white font-medium"}>Contributors</p>
+                <p className={theme === 'light'? "text-secondary-600 font-medium text-xs sm:text-base": "text-white font-medium text-xs sm:text-base"}>Contributors</p>
               </div>
               <div>
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={isInView ? { scale: 1 } : { scale: 0 }}
                   transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-                  className={theme === 'light' ? "text-3xl font-bold text-primary-600 mb-2" : "text-3xl font-bold text-white mb-2"}
+                  className={theme === 'light' ? "text-2xl sm:text-3xl font-bold text-primary-600 mb-1 sm:mb-2" : "text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2"}
                 >
                   100+
                 </motion.div>
-                <p className={theme === 'light'? "text-secondary-600 font-medium": "text-white font-medium"}>Projects</p>
+                <p className={theme === 'light'? "text-secondary-600 font-medium text-xs sm:text-base": "text-white font-medium text-xs sm:text-base"}>Projects</p>
               </div>
               <div>
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={isInView ? { scale: 1 } : { scale: 0 }}
                   transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
-                  className={theme === 'light' ? "text-3xl font-bold text-primary-600 mb-2" : "text-3xl font-bold text-white mb-2"}
+                  className={theme === 'light' ? "text-2xl sm:text-3xl font-bold text-primary-600 mb-1 sm:mb-2" : "text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2"}
                 >
                   50+
                 </motion.div>
-                <p className={theme === 'light'? "text-secondary-600 font-medium": "text-white font-medium"}>Countries</p>
+                <p className={theme === 'light'? "text-secondary-600 font-medium text-xs sm:text-base": "text-white font-medium text-xs sm:text-base"}>Countries</p>
               </div>
               <div>
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={isInView ? { scale: 1 } : { scale: 0 }}
                   transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-                  className={theme === 'light' ? "text-3xl font-bold text-primary-600 mb-2" : "text-3xl font-bold text-white mb-2"}
+                  className={theme === 'light' ? "text-2xl sm:text-3xl font-bold text-primary-600 mb-1 sm:mb-2" : "text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2"}
                 >
                   24/7
                 </motion.div>
-                <p className={theme === 'light'? "text-secondary-600 font-medium": "text-white font-medium"}>Community</p>
+                <p className={theme === 'light'? "text-secondary-600 font-medium text-xs sm:text-base": "text-white font-medium text-xs sm:text-base"}>Community</p>
               </div>
             </div>
           </motion.div>

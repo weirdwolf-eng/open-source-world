@@ -1,8 +1,7 @@
-import React, { use } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaRocket, FaUsers, FaGlobe } from 'react-icons/fa';
 import { itemVariants, containerVariants } from '../../utils/animations';
-import { ThemeProvider } from '../../context/ThemeContext';
 import { useTheme } from '../../context/ThemeContext';
 
 const HeroSection: React.FC = () => {
@@ -13,9 +12,8 @@ const HeroSection: React.FC = () => {
     }
   };
 
-  const {theme, toggleTheme} = useTheme();
+  const { theme } = useTheme();
 
-  // Blue gradient hero background
   const heroBackgroundStyle = theme === 'light' 
     ? 'min-h-screen relative overflow-hidden flex items-center bg-gradient-to-br from-[#073f70] to-[#1f84d6]'
     : 'min-h-screen relative overflow-hidden flex items-center bg-gradient-to-br from-[#0a0e14] to-[#1a2332]';
@@ -45,7 +43,7 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Floating Elements */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 hidden sm:block">
         <motion.div
           animate={{ 
             y: [-20, 20, -20],
@@ -84,7 +82,7 @@ const HeroSection: React.FC = () => {
         />
       </div>
 
-      <div className="container-max relative z-10">
+      <div className="container-max relative z-10 px-4">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -95,15 +93,15 @@ const HeroSection: React.FC = () => {
           <motion.div
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
-            className="w-24 h-24 bg-gradient-to-br from-[#3b9df0] to-[#1f84d6] rounded-xl flex items-center justify-center mx-auto mb-6 shadow-lg cursor-pointer"
+            className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-[#3b9df0] to-[#1f84d6] rounded-xl flex items-center justify-center mx-auto mb-6 shadow-lg cursor-pointer"
           >
-            <FaGlobe size={64} className="text-white" />
+            <FaGlobe size={48} className="text-white sm:w-16 sm:h-16" />
           </motion.div>
 
           {/* Headline */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight"
+            className="text-3xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight px-2"
           >
             Open Source
             <br />
@@ -115,7 +113,7 @@ const HeroSection: React.FC = () => {
           {/* Tagline */}
           <motion.p
             variants={itemVariants}
-            className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-xl lg:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed px-4"
           >
             Connecting developers worldwide through open source collaboration. 
             Join our global community and contribute to projects that matter.
@@ -124,41 +122,32 @@ const HeroSection: React.FC = () => {
           {/* Stats */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap justify-center gap-6 sm:gap-8 mb-12"
+            className="flex flex-wrap justify-center gap-3 sm:gap-6 lg:gap-8 mb-12 px-4"
           >
-            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-2xl px-4 py-2">
-              <FaUsers className="text-[#e8f4fd]" />
-              <span className="font-semibold">500+ Contributors</span>
+            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-2xl px-3 py-2 sm:px-4">
+              <FaUsers className="text-[#e8f4fd] text-sm sm:text-base" />
+              <span className="font-semibold text-xs sm:text-base">500+ Contributors</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-2xl px-4 py-2">
-              <FaGithub className="text-[#e8f4fd]" />
-              <span className="font-semibold">100+ Projects</span>
+            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-2xl px-3 py-2 sm:px-4">
+              <FaGithub className="text-[#e8f4fd] text-sm sm:text-base" />
+              <span className="font-semibold text-xs sm:text-base">100+ Projects</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-2xl px-4 py-2">
-              <FaRocket className="text-[#e8f4fd]" />
-              <span className="font-semibold">50+ Countries</span>
+            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-2xl px-3 py-2 sm:px-4">
+              <FaRocket className="text-[#e8f4fd] text-sm sm:text-base" />
+              <span className="font-semibold text-xs sm:text-base">50+ Countries</span>
             </div>
           </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12 px-4"
           >
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.2)" }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('#about')}
-              className="
-                    bg-white text-[#073f70] 
-                    hover:bg-[#e8f4fd] hover:text-[#073f70] 
-
-                    dark:bg-[#073f70] dark:text-white 
-                    dark:hover:bg-[#1f84d6] dark:hover:text-white 
-
-                    font-bold py-4 px-8 rounded-2xl 
-                    transition-all duration-300 shadow-xl text-lg
-                  "
+              className="w-full sm:w-auto bg-white text-[#073f70] hover:bg-[#e8f4fd] hover:text-[#073f70] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl transition-all duration-300 shadow-xl text-base sm:text-lg min-h-[48px]"
             >
               Learn More
             </motion.button>
@@ -166,11 +155,7 @@ const HeroSection: React.FC = () => {
               whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(255,255,255,0.2)" }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('#contact')}
-              className={`bg-transparent border-2 border-white text-white 
-              hover:bg-white hover:text-[#073f70] 
-              font-bold py-4 px-8 rounded-2xl transition-all duration-300 text-lg
-              ${theme === 'dark' ? 'border-blue-100 text-blue-900 hover:bg-[#041f3d] hover:text-[#041f3d]' : ''}
-            `}
+              className="w-full sm:w-auto bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#073f70] font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl transition-all duration-300 text-base sm:text-lg min-h-[48px]"
             >
               Join Community
             </motion.button>
@@ -183,8 +168,8 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 2, repeat: Infinity }}
             className="flex flex-col items-center text-white/70"
           >
-            <span className="text-sm mb-2">Scroll to explore</span>
-            <div className="w-px h-12 bg-gradient-to-b from-white/50 to-transparent"></div>
+            <span className="text-xs sm:text-sm mb-2">Scroll to explore</span>
+            <div className="w-px h-8 sm:h-12 bg-gradient-to-b from-white/50 to-transparent"></div>
           </motion.div>
         </motion.div>
       </div>
