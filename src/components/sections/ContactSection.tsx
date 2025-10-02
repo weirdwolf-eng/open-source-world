@@ -64,6 +64,13 @@ const ContactSection: React.FC = () => {
       color: "hover:bg-red-600",
       description: "Tutorials & talks",
     },
+    {
+      name: "Instagram",
+      icon: FaYoutube,
+      url: "https://www.instagram.com/0pensourceworld/",
+      color: "hover:bg-orange-600",
+      description: "Community highlights",
+    },
   ];
 
   const validateForm = () => {
@@ -129,44 +136,49 @@ const ContactSection: React.FC = () => {
 
   return (
     <section
-      id='contact'
+      id="contact"
       className={
         theme === "light"
           ? "section-padding bg-gradient-to-br from-gray-50 to-white"
           : "section-padding bg-secondary-900"
-      }>
-      <div className='container-max' ref={ref}>
+      }
+    >
+      <div className="container-max" ref={ref}>
         <motion.div
           variants={containerVariants}
-          initial='hidden'
-          animate={isInView ? "visible" : "hidden"}>
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className='text-center mb-16'>
+          <motion.div variants={itemVariants} className="text-center mb-16">
             <h2
               className={`text-4xl sm:text-5xl font-bold ${
                 theme === "light" ? "text-secondary-900" : "text-white"
-              } mb-6`}>
-              Get In <span className='text-gradient'>Touch</span>
+              } mb-6`}
+            >
+              Get In <span className="text-gradient">Touch</span>
             </h2>
-            <p className='text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed'>
+            <p className="text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
               Ready to join our mission? Have questions about our initiatives?
               We'd love to hear from you and explore how we can collaborate.
             </p>
           </motion.div>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Contact Form */}
             <motion.div variants={itemVariants}>
               <div
                 className={
                   theme === "light" ? "card p-8" : "card p-8 bg-[#444b4a]"
-                }>
+                }
+              >
                 <h3
                   className={
                     theme === "light"
                       ? "text-2xl font-bold text-secondary-900 mb-6"
                       : "text-2xl font-bold text-white mb-6"
-                  }>
+                  }
+                >
                   Send Message
                 </h3>
 
@@ -174,17 +186,19 @@ const ContactSection: React.FC = () => {
                   <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className='text-center py-12'>
+                    className="text-center py-12"
+                  >
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 1 }}
-                      className='w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6'>
-                      <FaCheckCircle size={40} className='text-primary-600' />
+                      className="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6"
+                    >
+                      <FaCheckCircle size={40} className="text-primary-600" />
                     </motion.div>
-                    <h4 className='text-2xl font-bold text-secondary-900 mb-4'>
+                    <h4 className="text-2xl font-bold text-secondary-900 mb-4">
                       Message Sent!
                     </h4>
-                    <p className='text-secondary-600'>
+                    <p className="text-secondary-600">
                       Thank you for reaching out. We'll get back to you within
                       24 hours.
                     </p>
@@ -192,21 +206,23 @@ const ContactSection: React.FC = () => {
                 ) : (
                   <form
                     onSubmit={handleSubmit}
-                    className={theme === "light" ? "space-y-6" : "space-y-6"}>
+                    className={theme === "light" ? "space-y-6" : "space-y-6"}
+                  >
                     <div>
                       <label
-                        htmlFor='name'
+                        htmlFor="name"
                         className={
                           theme === "light"
                             ? "block text-sm font-medium text-secondary-700 mb-2"
                             : "block text-sm font-medium text-white mb-2"
-                        }>
+                        }
+                      >
                         Full Name *
                       </label>
                       <input
-                        type='text'
-                        id='name'
-                        name='name'
+                        type="text"
+                        id="name"
+                        name="name"
                         value={formData.name}
                         onChange={handleInputChange}
                         className={
@@ -223,10 +239,10 @@ const ContactSection: React.FC = () => {
                               } bg-[#928f96] text-white placeholder:text-white  
                         `
                         }
-                        placeholder='Enter your full name'
+                        placeholder="Enter your full name"
                       />
                       {errors.name && (
-                        <p className='mt-2 text-sm text-red-600'>
+                        <p className="mt-2 text-sm text-red-600">
                           {errors.name}
                         </p>
                       )}
@@ -234,18 +250,19 @@ const ContactSection: React.FC = () => {
 
                     <div>
                       <label
-                        htmlFor='email'
+                        htmlFor="email"
                         className={
                           theme === "light"
                             ? "block text-sm font-medium text-secondary-700 mb-2"
                             : "block text-sm font-medium text-white mb-2"
-                        }>
+                        }
+                      >
                         Email Address *
                       </label>
                       <input
-                        type='email'
-                        id='email'
-                        name='email'
+                        type="email"
+                        id="email"
+                        name="email"
                         value={formData.email}
                         onChange={handleInputChange}
                         className={
@@ -262,10 +279,10 @@ const ContactSection: React.FC = () => {
                               } bg-[#928f96] text-white placeholder:text-white
                         `
                         }
-                        placeholder='Enter your email address'
+                        placeholder="Enter your email address"
                       />
                       {errors.email && (
-                        <p className='mt-2 text-sm text-red-600'>
+                        <p className="mt-2 text-sm text-red-600">
                           {errors.email}
                         </p>
                       )}
@@ -273,17 +290,18 @@ const ContactSection: React.FC = () => {
 
                     <div>
                       <label
-                        htmlFor='message'
+                        htmlFor="message"
                         className={
                           theme === "light"
                             ? "block text-sm font-medium text-secondary-700 mb-2"
                             : "block text-sm font-medium text-white mb-2"
-                        }>
+                        }
+                      >
                         Message *
                       </label>
                       <textarea
-                        id='message'
-                        name='message'
+                        id="message"
+                        name="message"
                         rows={6}
                         value={formData.message}
                         onChange={handleInputChange}
@@ -303,23 +321,24 @@ const ContactSection: React.FC = () => {
                         placeholder="Tell us about your project, questions, or how you'd like to contribute..."
                       />
                       {errors.message && (
-                        <p className='mt-2 text-sm text-red-600'>
+                        <p className="mt-2 text-sm text-red-600">
                           {errors.message}
                         </p>
                       )}
                     </div>
 
                     <motion.button
-                      type='submit'
+                      type="submit"
                       disabled={isSubmitting}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       className={`w-full btn-primary flex items-center justify-center space-x-2 ${
                         isSubmitting ? "opacity-75 cursor-not-allowed" : ""
-                      }`}>
+                      }`}
+                    >
                       {isSubmitting ? (
                         <>
-                          <div className='w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin' />
+                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                           <span>Sending...</span>
                         </>
                       ) : (
@@ -335,24 +354,26 @@ const ContactSection: React.FC = () => {
             </motion.div>
 
             {/* Contact Info & Social Links */}
-            <motion.div variants={itemVariants} className='flex flex-col gap-6'>
+            <motion.div variants={itemVariants} className="flex flex-col gap-6">
               {/* Contact Info */}
               <div
                 className={
                   theme === "light" ? "card p-8" : "card p-8 bg-[#444b4a]"
-                }>
+                }
+              >
                 <h3
                   className={
                     theme === "light"
                       ? "text-2xl font-bold text-secondary-900 mb-6"
                       : "text-2xl font-bold text-white mb-6"
-                  }>
+                  }
+                >
                   Contact Info
                 </h3>
-                <div className='space-y-4'>
-                  <div className='flex items-center space-x-4'>
-                    <div className='w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center'>
-                      <FaEnvelope className='text-primary-600' />
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center">
+                      <FaEnvelope className="text-primary-600" />
                     </div>
                     <div>
                       {/* <p className={theme === 'light'? "font-semibold text-secondary-900": "font-semibold text-white"}>Email</p>
@@ -362,7 +383,8 @@ const ContactSection: React.FC = () => {
                           theme === "light"
                             ? "font-semibold text-secondary-900"
                             : "font-semibold text-white"
-                        }>
+                        }
+                      >
                         Email
                       </p>
                       <p
@@ -370,15 +392,16 @@ const ContactSection: React.FC = () => {
                           theme === "light"
                             ? "text-secondary-600"
                             : "text-gray-200"
-                        }>
+                        }
+                      >
                         opensourceworld.fyi@gmail.com
                       </p>
                     </div>
                   </div>
 
-                  <div className='flex items-center space-x-4'>
-                    <div className='w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center'>
-                      <FaMapMarkerAlt className='text-primary-600' />
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center">
+                      <FaMapMarkerAlt className="text-primary-600" />
                     </div>
                     <div>
                       <p
@@ -386,7 +409,8 @@ const ContactSection: React.FC = () => {
                           theme === "light"
                             ? "font-semibold text-secondary-900"
                             : "font-semibold text-white"
-                        }>
+                        }
+                      >
                         Global Presence
                       </p>
                       <p
@@ -394,15 +418,16 @@ const ContactSection: React.FC = () => {
                           theme === "light"
                             ? "text-secondary-600"
                             : "text-gray-200"
-                        }>
+                        }
+                      >
                         Worldwide Community
                       </p>
                     </div>
                   </div>
 
-                  <div className='flex items-center space-x-4'>
-                    <div className='w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center'>
-                      <FaPhone className='text-primary-600' />
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center">
+                      <FaPhone className="text-primary-600" />
                     </div>
                     <div>
                       <p
@@ -410,7 +435,8 @@ const ContactSection: React.FC = () => {
                           theme === "light"
                             ? "font-semibold text-secondary-900"
                             : "font-semibold text-white"
-                        }>
+                        }
+                      >
                         Response Time
                       </p>
                       <p
@@ -418,7 +444,8 @@ const ContactSection: React.FC = () => {
                           theme === "light"
                             ? "text-secondary-600"
                             : "text-gray-200"
-                        }>
+                        }
+                      >
                         Within 24 hours
                       </p>
                     </div>
@@ -430,32 +457,36 @@ const ContactSection: React.FC = () => {
               <div
                 className={
                   theme === "light" ? "card p-8" : "card p-8 bg-[#444b4a]"
-                }>
+                }
+              >
                 <h3
                   className={
                     theme === "light"
                       ? "text-2xl font-bold text-secondary-900 mb-6"
                       : "text-2xl font-bold text-white mb-6"
-                  }>
+                  }
+                >
                   Connect With Us
                 </h3>
-                <div className='grid grid-cols-2 gap-4'>
+                <div className="grid grid-cols-2 gap-4">
                   {socialLinks.map((social, index) => (
                     <motion.a
                       key={social.name}
                       href={social.url}
-                      target='_blank'
-                      rel='noopener noreferrer'
+                      target="_blank"
+                      rel="noopener noreferrer"
                       whileHover={{ y: -5, scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className={`p-4 rounded-2xl border-2 border-gray-100 hover:border-primary-200 transition-all duration-300 text-center group ${social.color}`}>
-                      <div className='flex flex-col items-center space-y-2'>
+                      className={`p-4 rounded-2xl border-2 border-gray-100 hover:border-primary-200 transition-all duration-300 text-center group ${social.color}`}
+                    >
+                      <div className="flex flex-col items-center space-y-2">
                         <div
                           className={
                             theme === "light"
-                              ? "w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center mb-2 text-primary-600 group-hover:bg-white transition-colors"
+                              ? "w-full h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center mb-2 text-primary-600 group-hover:bg-white transition-colors"
                               : "w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center mb-2 text-primary-600 group-hover:bg-gray-200 transition-colors"
-                          }>
+                          }
+                        >
                           <social.icon size={24} />
                         </div>
                         <div>
@@ -464,7 +495,8 @@ const ContactSection: React.FC = () => {
                               theme === "light"
                                 ? "font-semibold text-secondary-900 group-hover:text-white transition-colors"
                                 : "font-semibold text-white "
-                            }>
+                            }
+                          >
                             {social.name}
                           </p>
                           <p
@@ -472,7 +504,8 @@ const ContactSection: React.FC = () => {
                               theme === "light"
                                 ? "text-sm text-secondary-600 group-hover:text-white transition-colors"
                                 : "text-sm text-gray-200"
-                            }>
+                            }
+                          >
                             {social.description}
                           </p>
                         </div>
@@ -483,23 +516,24 @@ const ContactSection: React.FC = () => {
               </div>
 
               {/* Newsletter Subscription */}
-              <div className='card p-8 bg-gradient-to-r from-primary-500 to-primary-600 text-white'>
+              <div className="card p-8 bg-gradient-to-r from-primary-500 to-primary-600 text-white">
                 <h3
                   className={
                     theme === "light"
                       ? "text-2xl font-bold text-secondary-900 mb-6"
                       : "text-2xl font-bold text-white mb-6"
-                  }>
+                  }
+                >
                   Stay Updated
                 </h3>
-                <p className='mb-6 text-primary-600'>
+                <p className="mb-6 text-primary-600">
                   Subscribe to our newsletter for the latest updates,
                   opportunities, and open source insights.
                 </p>
-                <div className='flex flex-col sm:flex-row gap-3'>
+                <div className="flex flex-col sm:flex-row gap-3">
                   <input
-                    type='email'
-                    placeholder='Enter your email'
+                    type="email"
+                    placeholder="Enter your email"
                     className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-primary-500 focus:border-primary-500 transition-colors ${
                       theme === "light"
                         ? "text-black placeholder:text-gray-500"
@@ -509,7 +543,8 @@ const ContactSection: React.FC = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className='btn-primary text-[#073f70] font-semibold px-6 py-3 rounded-xl hover:text-white transition-colors h-[50px]'>
+                    className="btn-primary text-[#073f70] font-semibold px-6 py-3 rounded-xl hover:text-white transition-colors h-[50px]"
+                  >
                     Subscribe
                   </motion.button>
                 </div>
