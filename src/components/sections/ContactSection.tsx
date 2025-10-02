@@ -12,6 +12,7 @@ import {
   FaPhone,
   FaPaperPlane,
   FaCheckCircle,
+  FaInstagram,
 } from "react-icons/fa";
 import { itemVariants, containerVariants } from "../../utils/animations";
 import { useTheme } from "../../context/ThemeContext";
@@ -66,9 +67,9 @@ const ContactSection: React.FC = () => {
     },
     {
       name: "Instagram",
-      icon: FaYoutube,
+      icon: FaInstagram,
       url: "https://www.instagram.com/0pensourceworld/",
-      color: "hover:bg-orange-600",
+      color: "hover:bg-orange-300",
       description: "Community highlights",
     },
   ];
