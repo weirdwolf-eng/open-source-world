@@ -255,7 +255,7 @@ const ContactSection: React.FC = () => {
                                   ? "border-red-300"
                                   : "border-gray-200"
                               }`
-                            : `w-full px-4 py-3 border-2 rounded-xlfocus:ring-primary-500 transition-colors ${
+                            : `w-full px-4 py-3 border-2 rounded-xl focus:ring-primary-500 transition-colors ${
                                 errors.email
                                   ? "border-red-300"
                                   : "border-gray-200"

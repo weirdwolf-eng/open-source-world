@@ -1,8 +1,7 @@
-import React, { use } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaRocket, FaUsers, FaGlobe } from "react-icons/fa";
 import { itemVariants, containerVariants } from "../../utils/animations";
-import { ThemeProvider } from "../../context/ThemeContext";
 import { useTheme } from "../../context/ThemeContext";
 
 const HeroSection: React.FC = () => {
@@ -13,7 +12,7 @@ const HeroSection: React.FC = () => {
     }
   };
 
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   // Blue gradient hero background
   const heroBackgroundStyle =
