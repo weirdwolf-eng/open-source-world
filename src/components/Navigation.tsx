@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Sun, Moon } from 'lucide-react';
-
 import '../index.css'
 import { useTheme } from '../context/ThemeContext';
 
 const Navigation: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -47,7 +45,7 @@ const Navigation: React.FC = () => {
       }`}
     >
       <div className="container-max">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-16 lg:h-20 px-4">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -55,10 +53,10 @@ const Navigation: React.FC = () => {
             className="flex items-center space-x-2 cursor-pointer"
           >
             <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#073f70] to-[#1f84d6]">
-              <span className="text-white font-bold text-lg">OSW</span>
+              <span className="text-white font-bold text-base sm:text-lg">OSW</span>
             </div>
-
-            <span className={`font-bold text-xl transition-colors ${
+            {/* Full text on larger screens */}
+            <span className={`hidden sm:inline font-bold text-lg sm:text-xl transition-colors ${
                 isScrolled ? 'text-gray-900' : 'text-white'
               }`}>
                 Open Source World
@@ -66,13 +64,13 @@ const Navigation: React.FC = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {navItems.map((item) => (
               <motion.button
                 key={item.name}
                 whileHover={{ y: -2 }}
                 onClick={() => scrollToSection(item.href)}
-                className={`font-medium transition-colors ${isScrolled
+                className={`font-medium transition-colors text-sm lg:text-base ${isScrolled
                   ? 'text-secondary-700 hover:text-primary-600'
                   : 'text-white/90 hover:text-white'
                   }`}
@@ -81,11 +79,8 @@ const Navigation: React.FC = () => {
               </motion.button>
             ))}
             {/* Theme Toggle */}
-            <button onClick={toggleTheme} aria-label="Toggle theme">
+            <button onClick={toggleTheme} aria-label="Toggle theme" className="p-2">
               {theme === "light" ? (
-                <Moon size={24} color="#a7acb5ff" />
-              ) : (
-                <Sun size={24} color="#ffffff" />
               )}
             </button>
 
@@ -93,22 +88,30 @@ const Navigation: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('#contact')}
-              className={`btn-primary ${!isScrolled ? 'bg-white text-primary-300 hover:bg-gray-100' : ''
+              className={`btn-primary text-sm lg:text-base ${!isScrolled ? 'bg-white text-primary-300 hover:bg-gray-100' : ''
                 }`}
             >
               Get Involved
             </motion.button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          {/* Mobile Menu Button & Theme Toggle */}
+          <div className="md:hidden flex items-center space-x-2">
+            <button onClick={toggleTheme} aria-label="Toggle theme" className="p-2">
+              {theme === "light" ? (
+                <Moon size={20} color="#a7acb5ff" />
+              ) : (
+                <Sun size={20} color="#ffffff" />
+              )}
+            </button>
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 rounded-lg ${isScrolled ? 'text-secondary-700' : 'text-white'
-                }`}
+              className={`p-2 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center ${
+                isScrolled ? 'text-secondary-700' : 'text-white'
+              }`}
             >
-              {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+              {isMobileMenuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
             </motion.button>
           </div>
         </div>
@@ -120,13 +123,13 @@ const Navigation: React.FC = () => {
         animate={isMobileMenuOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
         className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 overflow-hidden"
       >
-        <div className="container-max py-4 space-y-2">
+        <div className="container-max py-4 space-y-2 px-4">
           {navItems.map((item) => (
             <motion.button
               key={item.name}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection(item.href)}
-              className="block w-full text-left px-4 py-3 text-secondary-700 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-colors"
+              className="block w-full text-left px-4 py-3 text-secondary-700 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-colors min-h-[44px]"
             >
               {item.name}
             </motion.button>
@@ -134,7 +137,7 @@ const Navigation: React.FC = () => {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => scrollToSection('#contact')}
-            className="block w-full btn-primary mt-4"
+            className="block w-full btn-primary mt-4 min-h-[44px]"
           >
             Get Involved
           </motion.button>
