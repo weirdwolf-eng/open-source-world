@@ -5,7 +5,7 @@ import { useRef } from "react";
 import {
   FaGithub,
   FaLinkedin,
-  FaTwitter,
+  FaDiscord,
   FaYoutube,
   FaEnvelope,
   FaMapMarkerAlt,
@@ -40,7 +40,7 @@ const ContactSection: React.FC = () => {
       name: "GitHub",
       icon: FaGithub,
       url: "https://github.com/theopensourceworld",
-      color: "hover:bg-gray-800",
+      color: theme === "light" ? "hover:bg-gray-800" : "hover:bg-gray-600",
       description: "Contribute to our projects",
     },
     {
@@ -51,11 +51,11 @@ const ContactSection: React.FC = () => {
       description: "Professional network",
     },
     {
-      name: "Twitter",
-      icon: FaTwitter,
-      url: "https://twitter.com/opensourceworld",
-      color: "hover:bg-blue-400",
-      description: "Latest updates",
+      name: "Discord",
+      icon: FaDiscord,
+      url: "https://discord.gg/gEHBwfDX",
+      color: "hover:bg-indigo-600",
+      description: "Join our community",
     },
     {
       name: "YouTube",
@@ -164,12 +164,14 @@ const ContactSection: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <motion.div variants={itemVariants}>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Contact Form - Takes 2 columns */}
+            <motion.div variants={itemVariants} className="lg:col-span-2">
               <div
                 className={
-                  theme === "light" ? "card p-8" : "card p-8 bg-[#444b4a]"
+                  theme === "light"
+                    ? "card p-8 h-full"
+                    : "card p-8 bg-[#444b4a] h-full"
                 }
               >
                 <h3
@@ -195,19 +197,26 @@ const ContactSection: React.FC = () => {
                     >
                       <FaCheckCircle size={40} className="text-primary-600" />
                     </motion.div>
-                    <h4 className="text-2xl font-bold text-secondary-900 mb-4">
+                    <h4
+                      className={`text-2xl font-bold mb-4 ${
+                        theme === "light" ? "text-secondary-900" : "text-white"
+                      }`}
+                    >
                       Message Sent!
                     </h4>
-                    <p className="text-secondary-600">
+                    <p
+                      className={
+                        theme === "light"
+                          ? "text-secondary-600"
+                          : "text-gray-200"
+                      }
+                    >
                       Thank you for reaching out. We'll get back to you within
                       24 hours.
                     </p>
                   </motion.div>
                 ) : (
-                  <form
-                    onSubmit={handleSubmit}
-                    className={theme === "light" ? "space-y-6" : "space-y-6"}
-                  >
+                  <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                       <label
                         htmlFor="name"
@@ -227,17 +236,16 @@ const ContactSection: React.FC = () => {
                         onChange={handleInputChange}
                         className={
                           theme === "light"
-                            ? `w-full px-4 py-3 border-2 rounded-xl focus:ring-primary-500 transition-colors ${
+                            ? `w-full px-4 py-3 border-2 rounded-xl focus:ring-primary-500 focus:border-primary-500 transition-colors ${
                                 errors.name
                                   ? "border-red-300"
                                   : "border-gray-200"
                               }`
-                            : `w-full px-4 py-3 border-2 rounded-xl focus:ring-primary-500 transition-colors ${
+                            : `w-full px-4 py-3 border-2 rounded-xl focus:ring-primary-500 focus:border-primary-500 transition-colors ${
                                 errors.name
                                   ? "border-red-300"
                                   : "border-gray-200"
-                              } bg-[#928f96] text-white placeholder:text-white  
-                        `
+                              } bg-[#928f96] text-white placeholder:text-white`
                         }
                         placeholder="Enter your full name"
                       />
@@ -267,17 +275,16 @@ const ContactSection: React.FC = () => {
                         onChange={handleInputChange}
                         className={
                           theme === "light"
-                            ? `w-full px-4 py-3 border-2 rounded-xl focus:ring-primary-500 transition-colors ${
+                            ? `w-full px-4 py-3 border-2 rounded-xl focus:ring-primary-500 focus:border-primary-500 transition-colors ${
                                 errors.email
                                   ? "border-red-300"
                                   : "border-gray-200"
                               }`
-                            : `w-full px-4 py-3 border-2 rounded-xl focus:ring-primary-500 transition-colors ${
+                            : `w-full px-4 py-3 border-2 rounded-xl focus:ring-primary-500 focus:border-primary-500 transition-colors ${
                                 errors.email
                                   ? "border-red-300"
                                   : "border-gray-200"
-                              } bg-[#928f96] text-white placeholder:text-white
-                        `
+                              } bg-[#928f96] text-white placeholder:text-white`
                         }
                         placeholder="Enter your email address"
                       />
@@ -307,16 +314,16 @@ const ContactSection: React.FC = () => {
                         onChange={handleInputChange}
                         className={
                           theme === "light"
-                            ? `w-full px-4 py-3 border-2 rounded-xl focus:ring-primary-500 transition-colors resize-none ${
+                            ? `w-full px-4 py-3 border-2 rounded-xl focus:ring-primary-500 focus:border-primary-500 transition-colors resize-none ${
                                 errors.message
                                   ? "border-red-300"
                                   : "border-gray-200"
                               }`
-                            : `w-full px-4 bg-[#928f96]  py-3 border-2 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 placeholder:text-gray-200 transition-colors resize-none ${
+                            : `w-full px-4 py-3 border-2 rounded-xl focus:ring-primary-500 focus:border-primary-500 transition-colors resize-none ${
                                 errors.message
                                   ? "border-red-300"
                                   : "border-gray-200"
-                              }`
+                              } bg-[#928f96] text-white placeholder:text-gray-200`
                         }
                         placeholder="Tell us about your project, questions, or how you'd like to contribute..."
                       />
@@ -353,36 +360,34 @@ const ContactSection: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Contact Info & Social Links */}
-            <motion.div variants={itemVariants} className="flex flex-col gap-6">
+            {/* Contact Info & Social Links - Takes 1 column */}
+            <motion.div variants={itemVariants} className="space-y-8">
               {/* Contact Info */}
               <div
                 className={
-                  theme === "light" ? "card p-8" : "card p-8 bg-[#444b4a]"
+                  theme === "light" ? "card p-6" : "card p-6 bg-[#444b4a]"
                 }
               >
                 <h3
                   className={
                     theme === "light"
-                      ? "text-2xl font-bold text-secondary-900 mb-6"
-                      : "text-2xl font-bold text-white mb-6"
+                      ? "text-xl font-bold text-secondary-900 mb-6"
+                      : "text-xl font-bold text-white mb-6"
                   }
                 >
                   Contact Info
                 </h3>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center">
-                      <FaEnvelope className="text-primary-600" />
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-[#dbeafe] rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <FaEnvelope className="text-primary-600 text-sm" />
                     </div>
-                    <div>
-                      {/* <p className={theme === 'light'? "font-semibold text-secondary-900": "font-semibold text-white"}>Email</p>
-                      <p className={theme === 'light'? "text-secondary-600": "text-gray-200"}>hello@opensource-world.org</p> */}
+                    <div className="min-w-0">
                       <p
                         className={
                           theme === "light"
-                            ? "font-semibold text-secondary-900"
-                            : "font-semibold text-white"
+                            ? "font-semibold text-secondary-900 text-sm"
+                            : "font-semibold text-white text-sm"
                         }
                       >
                         Email
@@ -390,8 +395,8 @@ const ContactSection: React.FC = () => {
                       <p
                         className={
                           theme === "light"
-                            ? "text-secondary-600"
-                            : "text-gray-200"
+                            ? "text-secondary-600 text-sm break-all"
+                            : "text-gray-200 text-sm break-all"
                         }
                       >
                         opensourceworld.fyi@gmail.com
@@ -399,16 +404,16 @@ const ContactSection: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center">
-                      <FaMapMarkerAlt className="text-primary-600" />
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-[#dbeafe] rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <FaMapMarkerAlt className="text-primary-600 text-sm" />
                     </div>
                     <div>
                       <p
                         className={
                           theme === "light"
-                            ? "font-semibold text-secondary-900"
-                            : "font-semibold text-white"
+                            ? "font-semibold text-secondary-900 text-sm"
+                            : "font-semibold text-white text-sm"
                         }
                       >
                         Global Presence
@@ -416,8 +421,8 @@ const ContactSection: React.FC = () => {
                       <p
                         className={
                           theme === "light"
-                            ? "text-secondary-600"
-                            : "text-gray-200"
+                            ? "text-secondary-600 text-sm"
+                            : "text-gray-200 text-sm"
                         }
                       >
                         Worldwide Community
@@ -425,16 +430,16 @@ const ContactSection: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center">
-                      <FaPhone className="text-primary-600" />
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-[#dbeafe] rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <FaPhone className="text-primary-600 text-sm" />
                     </div>
                     <div>
                       <p
                         className={
                           theme === "light"
-                            ? "font-semibold text-secondary-900"
-                            : "font-semibold text-white"
+                            ? "font-semibold text-secondary-900 text-sm"
+                            : "font-semibold text-white text-sm"
                         }
                       >
                         Response Time
@@ -442,8 +447,8 @@ const ContactSection: React.FC = () => {
                       <p
                         className={
                           theme === "light"
-                            ? "text-secondary-600"
-                            : "text-gray-200"
+                            ? "text-secondary-600 text-sm"
+                            : "text-gray-200 text-sm"
                         }
                       >
                         Within 24 hours
@@ -456,45 +461,59 @@ const ContactSection: React.FC = () => {
               {/* Social Links */}
               <div
                 className={
-                  theme === "light" ? "card p-8" : "card p-8 bg-[#444b4a]"
+                  theme === "light" ? "card p-6" : "card p-6 bg-[#444b4a]"
                 }
               >
                 <h3
                   className={
                     theme === "light"
-                      ? "text-2xl font-bold text-secondary-900 mb-6"
-                      : "text-2xl font-bold text-white mb-6"
+                      ? "text-xl font-bold text-secondary-900 mb-6"
+                      : "text-xl font-bold text-white mb-6"
                   }
                 >
                   Connect With Us
                 </h3>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3">
                   {socialLinks.map((social, index) => (
                     <motion.a
                       key={social.name}
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ y: -5, scale: 1.02 }}
+                      whileHover={{ y: -3, scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className={`p-4 rounded-2xl border-2 border-gray-100 hover:border-primary-200 transition-all duration-300 text-center group ${social.color}`}
+                      className={`p-3 rounded-xl border-2 hover:border-primary-200 transition-all duration-300 text-center group ${
+                        theme === "light"
+                          ? "border-gray-100"
+                          : "border-gray-600"
+                      } ${social.color}`}
                     >
                       <div className="flex flex-col items-center space-y-2">
                         <div
                           className={
                             theme === "light"
-                              ? "w-full h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center mb-2 text-primary-600 group-hover:bg-white transition-colors"
-                              : "w-12 h-12 bg-[#dbeafe] rounded-xl flex items-center justify-center mb-2 text-primary-600 group-hover:bg-gray-200 transition-colors"
+                              ? "w-8 h-8 bg-[#dbeafe] rounded-lg flex items-center justify-center text-primary-600 group-hover:bg-white transition-colors"
+                              : "w-8 h-8 bg-[#dbeafe] rounded-lg flex items-center justify-center text-primary-600 group-hover:bg-gray-200 transition-colors"
                           }
                         >
-                          <social.icon size={24} />
+                          <social.icon size={16} />
                         </div>
                         <div>
                           <p
                             className={
                               theme === "light"
-                                ? "font-semibold text-secondary-900 group-hover:text-white transition-colors"
-                                : "font-semibold text-white "
+                                ? `font-semibold text-secondary-900 transition-colors text-xs ${
+                                    social.name === "GitHub"
+                                      ? "group-hover:text-white"
+                                      : social.name === "LinkedIn"
+                                      ? "group-hover:text-white"
+                                      : social.name === "Discord"
+                                      ? "group-hover:text-white"
+                                      : social.name === "YouTube"
+                                      ? "group-hover:text-white"
+                                      : ""
+                                  }`
+                                : "font-semibold text-white text-xs"
                             }
                           >
                             {social.name}
@@ -502,8 +521,18 @@ const ContactSection: React.FC = () => {
                           <p
                             className={
                               theme === "light"
-                                ? "text-sm text-secondary-600 group-hover:text-white transition-colors"
-                                : "text-sm text-gray-200"
+                                ? `text-xs text-secondary-600 transition-colors ${
+                                    social.name === "GitHub"
+                                      ? "group-hover:text-white"
+                                      : social.name === "LinkedIn"
+                                      ? "group-hover:text-white"
+                                      : social.name === "Discord"
+                                      ? "group-hover:text-white"
+                                      : social.name === "YouTube"
+                                      ? "group-hover:text-white"
+                                      : ""
+                                  }`
+                                : "text-xs text-gray-200"
                             }
                           >
                             {social.description}
@@ -512,41 +541,6 @@ const ContactSection: React.FC = () => {
                       </div>
                     </motion.a>
                   ))}
-                </div>
-              </div>
-
-              {/* Newsletter Subscription */}
-              <div className="card p-8 bg-gradient-to-r from-primary-500 to-primary-600 text-white">
-                <h3
-                  className={
-                    theme === "light"
-                      ? "text-2xl font-bold text-secondary-900 mb-6"
-                      : "text-2xl font-bold text-white mb-6"
-                  }
-                >
-                  Stay Updated
-                </h3>
-                <p className="mb-6 text-primary-600">
-                  Subscribe to our newsletter for the latest updates,
-                  opportunities, and open source insights.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-primary-500 focus:border-primary-500 transition-colors ${
-                      theme === "light"
-                        ? "text-black placeholder:text-gray-500"
-                        : "bg-[#928f96] text-white placeholder:text-white"
-                    }`}
-                  />
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="btn-primary text-[#073f70] font-semibold px-6 py-3 rounded-xl hover:text-white transition-colors h-[50px]"
-                  >
-                    Subscribe
-                  </motion.button>
                 </div>
               </div>
             </motion.div>
