@@ -13,34 +13,34 @@ const TeamSection: React.FC = () => {
 
   const teamMembers = [
     {
-      name: "Alex Johnson",
+      name: "Athar Ramzan",
       role: "Founder & CEO",
-      bio: "Passionate about open source and community building. 10+ years of experience in tech leadership.",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+      bio: "Passionate about open source and community building. Committed to building a more inclusive and diverse tech community.",
+      avatar: "/profiles/athar1.jpg",
       social: {
-        github: "https://github.com",
-        linkedin: "https://linkedin.com",
+        github: "https://github.com/oathar",
+        linkedin: "https://www.linkedin.com/in/athar-ramzan/",
         twitter: "https://twitter.com",
-        email: "alex@opensource-world.org"
+        email: "eatharg@gmail.com"
       }
     },
     {
-      name: "Sarah Chen",
-      role: "CTO",
+      name: "Ayaan Taimur",
+      role: " Co-Founder & CTO",
       bio: "Full-stack developer and open source advocate. Loves building scalable solutions and mentoring developers.",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b5bc?w=300&h=300&fit=crop&crop=face",
+      avatar: "https://avatars.githubusercontent.com/u/183049832?v=4",
       social: {
-        github: "https://github.com",
-        linkedin: "https://linkedin.com",
+        github: "https://github.com/mat1018",
+        linkedin: "https://www.linkedin.com/in/ayaan-taimur/",
         twitter: "https://twitter.com",
-        email: "sarah@opensource-world.org"
+        email: "taimurayaan18@gmail.com"
       }
     },
     {
-      name: "Mohammed Khan",
-      role: "OSK Regional Lead",
-      bio: "Leading the Kashmir initiative. Expert in community outreach and local tech ecosystem development.",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+      name: "Agam Kundu",
+      role: "Marketing Lead",
+      bio: "Leading the OSW initiative. Expert in community outreach and content creation for tech ecosystem development.",
+      avatar: "/profiles/agam.jpg",
       social: {
         github: "https://github.com",
         linkedin: "https://linkedin.com",
@@ -52,7 +52,7 @@ const TeamSection: React.FC = () => {
       name: "Emily Rodriguez",
       role: "Community Manager",
       bio: "Building bridges between developers worldwide. Passionate about diversity and inclusion in tech.",
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
+      avatar: "/profiles/emily.jpg",
       social: {
         github: "https://github.com",
         linkedin: "https://linkedin.com",
@@ -64,7 +64,7 @@ const TeamSection: React.FC = () => {
       name: "David Park",
       role: "Lead Developer",
       bio: "Open source enthusiast with expertise in modern web technologies. Contributor to major OSS projects.",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
+      avatar: "/profiles/david.jpg",
       social: {
         github: "https://github.com",
         linkedin: "https://linkedin.com",
@@ -76,7 +76,7 @@ const TeamSection: React.FC = () => {
       name: "Priya Sharma",
       role: "Developer Relations",
       bio: "Connecting developers with opportunities. Background in developer advocacy and technical writing.",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=300&fit=crop&crop=face",
+      avatar: "/profiles/priya.jpg",
       social: {
         github: "https://github.com",
         linkedin: "https://linkedin.com",
