@@ -2,14 +2,15 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { FaCode, FaUsers, FaGlobe, FaHeart, FaMountain, FaHandshake } from 'react-icons/fa';
+import { FaCode, FaUsers, FaGlobe, FaMountain, FaGithub, FaCheckCircle, FaInstagram } from 'react-icons/fa';
+import { SiDiscord } from 'react-icons/si';
 import { itemVariants, containerVariants } from '../../utils/animations';
 import { useTheme } from '../../context/ThemeContext';
 
 const AboutSection: React.FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   const features = [
     {
@@ -26,24 +27,6 @@ const AboutSection: React.FC = () => {
       icon: FaGlobe,
       title: "Worldwide Impact",
       description: "Our projects and initiatives span across continents, making a real difference in communities everywhere."
-    }
-  ];
-
-  const oskFeatures = [
-    {
-      icon: FaMountain,
-      title: "Kashmir Focus",
-      description: "Dedicated to promoting open source culture and development opportunities in the Kashmir region."
-    },
-    {
-      icon: FaHandshake,
-      title: "Local Partnerships",
-      description: "Building strong relationships with local institutions, universities, and tech communities."
-    },
-    {
-      icon: FaHeart,
-      title: "Community Support",
-      description: "Providing mentorship, resources, and opportunities for local developers to thrive."
     }
   ];
 
@@ -100,53 +83,110 @@ const AboutSection: React.FC = () => {
             ))}
           </motion.div>
 
-          {/* OSK Section */}
-          <motion.div 
-            variants={itemVariants} 
-            className={`${cardBg} rounded-3xl p-8 sm:p-12 transition-all duration-300`}
-          >
+          {/* Initiatives Section */}
+          <motion.div variants={itemVariants} className="mt-20" id="initiatives">
             <div className="text-center mb-12">
               <h3 className={`text-3xl font-bold mb-4 ${textPrimary}`}>
-                Meet <span className={textGradient}>Open Source Kashmir</span>
+                Our <span className={textGradient}>Initiatives</span>
               </h3>
               <p className={`max-w-3xl mx-auto leading-relaxed ${textSecondary}`}>
-                Our regional branch focused on nurturing open source talent and creating 
-                opportunities in the beautiful Kashmir valley and surrounding regions.
+                Discover our regional branches and specialized programs driving open source 
+                innovation across different communities and regions.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-              {oskFeatures.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ y: -5 }}
-                  className="text-center group"
-                >
-                  <div className="w-14 h-14 bg-gradient-to-br from-[#e8f4fd] to-[#3b9df0] rounded-2xl flex items-center justify-center mx-auto mb-4 text-[#073f70] text-xl group-hover:shadow-lg transition-all duration-300">
-                    <feature.icon />
+            {/* Initiative Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* OSK Initiative Card */}
+              <motion.div
+                whileHover={{ y: -10, scale: 1.02 }}
+                className={`${cardBg} rounded-3xl p-8 transition-all duration-300`}
+              >
+                {/* Logo/Icon */}
+                <div className="w-16 h-16 bg-gradient-to-br from-[#1f84d6] to-[#073f70] rounded-2xl flex items-center justify-center mb-6 text-white text-2xl shadow-xl">
+                  <FaMountain />
+                </div>
+
+                {/* Initiative Name */}
+                <h4 className={`text-2xl font-bold mb-3 ${textPrimary}`}>
+                  Open Source Kashmir
+                </h4>
+
+                {/* Tagline */}
+                <p className={`text-sm font-semibold mb-4 ${textGradient}`}>
+                  Regional Branch
+                </p>
+
+                {/* Description */}
+                <p className={`leading-relaxed mb-6 ${textSecondary}`}>
+                  Dedicated to promoting open source culture and development opportunities 
+                  in the Kashmir region. Building bridges between local talent and global opportunities.
+                </p>
+
+                {/* Key Features */}
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-start space-x-2">
+                    <FaCheckCircle className="text-[#1f84d6] mt-1 flex-shrink-0" />
+                    <p className={`text-sm ${textSecondary}`}>Local community building</p>
                   </div>
-                  <h4 className={`text-xl font-bold mb-3 ${textPrimary}`}>
-                    {feature.title}
-                  </h4>
-                  <p className={`text-sm leading-relaxed ${textSecondary}`}>
-                    {feature.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+                  <div className="flex items-start space-x-2">
+                    <FaCheckCircle className="text-[#1f84d6] mt-1 flex-shrink-0" />
+                    <p className={`text-sm ${textSecondary}`}>Mentorship programs</p>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <FaCheckCircle className="text-[#1f84d6] mt-1 flex-shrink-0" />
+                    <p className={`text-sm ${textSecondary}`}>University partnerships</p>
+                  </div>
+                </div>
 
-            {/* Connection Section */}
-            <div className="text-center max-w-3xl mx-auto">
-              <h4 className={`text-2xl font-bold mb-4 ${textPrimary}`}>
-                How OSK Connects with OSW
-              </h4>
-              <p className={`leading-relaxed ${textSecondary}`}>
-                Open Source Kashmir serves as a vital regional hub within the Open Source World ecosystem. 
-                While OSW operates on a global scale, OSK focuses on grassroots development, 
-                local talent nurturing, and region-specific initiatives that contribute to the larger 
-                global open source movement. Together, we're building bridges between local communities 
-                and worldwide opportunities.
-              </p>
+                {/* Social Links */}
+                <div className={`flex items-center space-x-3 pt-4 border-t ${theme === 'light' ? 'border-gray-200' : 'border-gray-700'}`}>
+                  <motion.a
+                    href="https://github.com/opensourcekashmir"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all ${
+                      theme === 'light' 
+                        ? 'bg-[#e8f4fd] text-[#073f70] hover:bg-[#1f84d6] hover:text-white' 
+                        : 'bg-[#1a2332] text-[#3b9df0] hover:bg-[#1f84d6] hover:text-white'
+                    }`}
+                    aria-label="OSK GitHub"
+                  >
+                    <FaGithub size={18} />
+                  </motion.a>
+                  <motion.a
+                    href="https://discord.gg/osk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all ${
+                      theme === 'light' 
+                        ? 'bg-[#e8f4fd] text-[#073f70] hover:bg-[#5865F2] hover:text-white' 
+                        : 'bg-[#1a2332] text-[#3b9df0] hover:bg-[#5865F2] hover:text-white'
+                    }`}
+                    aria-label="OSK Discord"
+                  >
+                    <SiDiscord size={18} />
+                  </motion.a>
+                  <motion.a
+                    href="https://instagram.com/opensourcekashmir"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all ${
+                      theme === 'light' 
+                        ? 'bg-[#e8f4fd] text-[#073f70] hover:bg-[#E4405F] hover:text-white' 
+                        : 'bg-[#1a2332] text-[#3b9df0] hover:bg-[#E4405F] hover:text-white'
+                    }`}
+                    aria-label="OSK Instagram"
+                  >
+                    <FaInstagram size={18} />
+                  </motion.a>
+                </div>
+              </motion.div>
+
+              {/* Placeholder for future initiatives - You can add more cards here */}
             </div>
           </motion.div>
 

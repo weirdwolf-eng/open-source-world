@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { Sun, MoonIcon, SunDim, Moon } from 'lucide-react';
-
-
-
-
+import { Sun, Moon } from 'lucide-react';
 
 import '../index.css'
 import { useTheme } from '../context/ThemeContext';
+
 const Navigation: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  //using the hook 
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -26,8 +22,8 @@ const Navigation: React.FC = () => {
   }, []);
 
   const navItems = [
-    //{ name: 'Home', href: '#hero' },
     { name: 'About', href: '#about' },
+    { name: 'Initiatives', href: '#initiatives' },
     { name: 'Team', href: '#team' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -41,7 +37,6 @@ const Navigation: React.FC = () => {
   };
 
   return (
-
     <motion.nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
@@ -51,9 +46,6 @@ const Navigation: React.FC = () => {
           : ""
       }`}
     >
-
-
-
       <div className="container-max">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -71,7 +63,6 @@ const Navigation: React.FC = () => {
               }`}>
                 Open Source World
             </span>
-
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -92,12 +83,11 @@ const Navigation: React.FC = () => {
             {/* Theme Toggle */}
             <button onClick={toggleTheme} aria-label="Toggle theme">
               {theme === "light" ? (
-                <Moon size={24} color="#a7acb5ff" />   // gray-500 hex for light mode
+                <Moon size={24} color="#a7acb5ff" />
               ) : (
-                <Sun size={24} color="#ffffff" />    // white for dark mode
+                <Sun size={24} color="#ffffff" />
               )}
             </button>
-
 
             <motion.button
               whileHover={{ scale: 1.05 }}
