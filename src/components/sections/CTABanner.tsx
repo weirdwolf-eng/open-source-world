@@ -8,9 +8,9 @@ import { useTheme } from "../../context/ThemeContext";
 const CTABanner: React.FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const { theme } = useTheme();
 
   // Using properly typed variants from utils
-  const { theme, toggleTheme } = useTheme();
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {

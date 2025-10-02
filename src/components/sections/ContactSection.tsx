@@ -35,8 +35,6 @@ const ContactSection: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Using properly typed variants from utils
-
   const socialLinks = [
     {
       name: "GitHub",

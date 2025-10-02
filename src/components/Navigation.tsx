@@ -9,7 +9,6 @@ import { useTheme } from "../context/ThemeContext";
 const Navigation: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -51,59 +50,79 @@ const Navigation: React.FC = () => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             onClick={() => scrollToSection("#hero")}
-            className='flex items-center space-x-2 cursor-pointer p-10'>
-            <div className='w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#073f70] to-[#1f84d6] px-8'>
-              <span className='text-white font-bold text-lg'>OSW</span>
+            className='flex items-center space-x-2 cursor-pointer'>
+            <div className='w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#073f70] to-[#1f84d6]'>
+              <span className='text-white font-bold text-base sm:text-lg'>
+                OSW
+              </span>
             </div>
           </motion.div>
 
           {/* Desktop Navigation */}
           <div className='hidden md:flex items-center space-x-8'>
-            {navItems.map((item) => (
+            <div className='hidden md:flex items-center space-x-6 lg:space-x-8'>
+              {navItems.map((item) => (
+                <motion.button
+                  key={item.name}
+                  whileHover={{ y: -2 }}
+                  onClick={() => scrollToSection(item.href)}
+                  className={`font-medium transition-colors ${
+                    isScrolled
+                      ? theme === "dark"
+                        ? "text-white hover:text-primary-600"
+                        : "text-secondary-700 hover:text-primary-600"
+                      : "text-white/90 hover:text-white"
+                  }`}>
+                  {item.name}
+                </motion.button>
+              ))}
+              {/* Theme Toggle */}
+              <button onClick={toggleTheme} aria-label='Toggle theme'>
+                {theme === "light" ? (
+                  <Moon size={24} color='#a7acb5ff' />
+                ) : (
+                  <Sun size={24} color='#ffffff' />
+                )}
+              </button>
+
               <motion.button
-                key={item.name}
-                whileHover={{ y: -2 }}
-                onClick={() => scrollToSection(item.href)}
-                className={`font-medium transition-colors ${
-                  isScrolled
-                    ? theme === "dark"
-                      ? "text-white hover:text-primary-600"
-                      : "text-secondary-700 hover:text-primary-600"
-                    : "text-white/90 hover:text-white"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection("#contact")}
+                className={`btn-primary ${
+                  !isScrolled
+                    ? "bg-white text-primary-300 hover:bg-gray-100"
+                    : ""
                 }`}>
-                {item.name}
+                Get Involved
               </motion.button>
-            ))}
-            {/* Theme Toggle */}
-            <button onClick={toggleTheme} aria-label='Toggle theme'>
-              {theme === "light" ? (
-                <Moon size={24} color='#a7acb5ff' />
-              ) : (
-                <Sun size={24} color='#ffffff' />
-              )}
-            </button>
+            </div>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => scrollToSection("#contact")}
-              className={`btn-primary ${
-                !isScrolled ? "bg-white text-primary-300 hover:bg-gray-100" : ""
-              }`}>
-              Get Involved
-            </motion.button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className='md:hidden'>
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 rounded-lg ${
-                isScrolled ? "text-secondary-700" : "text-white"
-              }`}>
-              {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-            </motion.button>
+            {/* Mobile Menu Button & Theme Toggle */}
+            <div className='md:hidden flex items-center space-x-2'>
+              <button
+                onClick={toggleTheme}
+                aria-label='Toggle theme'
+                className='p-2'>
+                {theme === "light" ? (
+                  <Moon size={20} color='#a7acb5ff' />
+                ) : (
+                  <Sun size={20} color='#ffffff' />
+                )}
+              </button>
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={`p-2 rounded-lg ${
+                  isScrolled ? "text-secondary-700" : "text-white"
+                }`}>
+                {isMobileMenuOpen ? (
+                  <FaTimes size={24} />
+                ) : (
+                  <FaBars size={24} />
+                )}
+              </motion.button>
+            </div>
           </div>
         </div>
       </div>
