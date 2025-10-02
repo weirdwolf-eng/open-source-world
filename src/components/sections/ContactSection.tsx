@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import emailjs from '@emailjs/browser';
 import {
   FaGithub,
   FaLinkedin,
@@ -35,6 +36,12 @@ const ContactSection: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  // EmailJS configuration - Using environment variables
+  const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || '';
+  const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || '';
+  const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || '';
 
   const socialLinks = [
     {
@@ -109,18 +116,42 @@ const ContactSection: React.FC = () => {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+    setSubmitError("");
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      // Check if EmailJS is properly configured
+      if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+        throw new Error('EmailJS configuration missing. Please check your environment variables.');
+      }
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      // Send email using EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_name: 'Open Source World Team', // You can customize this
+      };
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: "", email: "", message: "" });
-    }, 3000);
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({ name: "", email: "", message: "" });
+      }, 5000);
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setIsSubmitting(false);
+      setSubmitError('Failed to send message. Please try again or contact us directly.');
+    }
   };
 
   const handleInputChange = (
@@ -334,6 +365,12 @@ const ContactSection: React.FC = () => {
                         </p>
                       )}
                     </div>
+
+                    {submitError && (
+                      <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-xl">
+                        <p className="text-sm">{submitError}</p>
+                      </div>
+                    )}
 
                     <motion.button
                       type="submit"
