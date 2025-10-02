@@ -133,7 +133,7 @@ const ContactSection: React.FC = () => {
       className={
         theme === "light"
           ? "section-padding bg-gradient-to-br from-gray-50 to-white"
-          : "dark: darkbg"
+          : "section-padding bg-secondary-900"
       }>
       <div className='container-max' ref={ref}>
         <motion.div
@@ -500,7 +500,6 @@ const ContactSection: React.FC = () => {
                   <input
                     type='email'
                     placeholder='Enter your email'
-                    /*  className='flex-1 px-4 py-3 rounded-xl text-secondary-900 focus:outline-none focus:ring-2 focus:ring-white min-h-[50px]' */
                     className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-primary-500 focus:border-primary-500 transition-colors ${
                       theme === "light"
                         ? "text-black placeholder:text-gray-500"
