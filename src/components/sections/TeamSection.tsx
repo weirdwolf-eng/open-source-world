@@ -9,10 +9,8 @@ import { useTheme } from '../../context/ThemeContext';
 const TeamSection: React.FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const { theme } = useTheme();
 
-  // Using properly typed variants from utils
-  const { theme, toggleTheme } = useTheme();
-  // Sample team members - you can replace with actual team data
   const teamMembers = [
     {
       name: "Athar Ramzan",
@@ -95,7 +93,7 @@ const TeamSection: React.FC = () => {
       rel="noopener noreferrer"
       whileHover={{ scale: 1.2, y: -2 }}
       whileTap={{ scale: 0.9 }}
-      className="w-10 h-10 bg-gray-100 hover:bg-primary-100 rounded-xl flex items-center justify-center text-gray-600 hover:text-primary-600 transition-all duration-300"
+      className="w-10 h-10 bg-gray-100 hover:bg-primary-100 rounded-xl flex items-center justify-center text-gray-600 hover:text-primary-600 transition-all duration-300 min-w-[44px] min-h-[44px]"
       aria-label={label}
     >
       {icon}
@@ -104,44 +102,43 @@ const TeamSection: React.FC = () => {
 
   return (
     <section id="team" className={theme === 'light'? "section-padding bg-white": "dark: darkbg"}>
-      <div className="container-max" ref={ref}>
+      <div className="container-max px-4" ref={ref}>
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className={theme === 'light'? "text-4xl font-bold mb-4 text-secondary-900": "text-4xl font-bold mb-4 text-white"}>
+          <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16">
+            <h2 className={theme === 'light'? "text-3xl sm:text-4xl font-bold mb-4 text-secondary-900": "text-3xl sm:text-4xl font-bold mb-4 text-white"}>
               Meet Our <span className="text-gradient">Amazing Team</span>
             </h2>
-            <p className={theme === 'light'? "text-lg text-secondary-600 max-w-2xl mx-auto": "text-lg text-white max-w-2xl mx-auto"}>
+            <p className={theme === 'light'? "text-base sm:text-lg text-secondary-600 max-w-2xl mx-auto": "text-base sm:text-lg text-white max-w-2xl mx-auto"}>
               Passionate individuals working together to build the future of open source collaboration.
               Each bringing unique skills and perspectives to our global mission.
             </p>
           </motion.div>
 
           {/* Team Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
                 whileHover={{ y: -10 }}
-                className={theme === 'light' ? "card p-6 text-center group overflow-hidden" :  " card bg-[#444b4a] p-6 text-center text-white group overflow-hidden"}
+                className={theme === 'light' ? "card p-4 sm:p-6 text-center group overflow-hidden" :  "card bg-[#444b4a] p-4 sm:p-6 text-center text-white group overflow-hidden"}
               >
                 {/* Avatar */}
-                <div className="relative mb-6">
+                <div className="relative mb-4 sm:mb-6">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
-                    className="w-24 h-24 mx-auto rounded-2xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300"
+                    className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-2xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300"
                   >
                     <img
                       src={member.avatar}
                       alt={member.name}
                       className="w-full h-full object-cover"
                       onError={(e) => {
-                        // Fallback to initials if image fails to load
                         const target = e.target as HTMLImageElement;
                         target.style.display = 'none';
                         const fallback = target.nextElementSibling as HTMLElement;
@@ -149,7 +146,7 @@ const TeamSection: React.FC = () => {
                       }}
                     />
                     <div 
-                      className={theme === 'light' ? "w-full h-full bg-gray-200 flex items-center justify-center text-2xl font-bold text-gray-600" : "w-full h-full bg-gray-700 flex items-center justify-center text-2xl font-bold text-white"}
+                      className={theme === 'light' ? "w-full h-full bg-gray-200 flex items-center justify-center text-xl sm:text-2xl font-bold text-gray-600" : "w-full h-full bg-gray-700 flex items-center justify-center text-xl sm:text-2xl font-bold text-white"}
                     >
                       {member.name.split(' ').map(n => n[0]).join('')}
                     </div>
@@ -157,30 +154,30 @@ const TeamSection: React.FC = () => {
                 </div>
 
                 {/* Member Info */}
-                <h3 className={theme === 'light'? 'text-xl font-bold text-secondary-900 mb-2': "text-xl font-bold text-white mb-2"}>{member.name}</h3>
-                <p className={theme === 'light'? "text-primary-600 font-semibold mb-4": "text-gradient font-semibold mb-4"}>{member.role}</p>
-                <p className={theme === 'light'? "text-secondary-600 text-sm leading-relaxed mb-6": "text-white text-sm leading-relaxed mb-6"}>{member.bio}</p>
+                <h3 className={theme === 'light'? 'text-lg sm:text-xl font-bold text-secondary-900 mb-2': "text-lg sm:text-xl font-bold text-white mb-2"}>{member.name}</h3>
+                <p className={theme === 'light'? "text-primary-600 font-semibold mb-3 sm:mb-4 text-sm sm:text-base": "text-gradient font-semibold mb-3 sm:mb-4 text-sm sm:text-base"}>{member.role}</p>
+                <p className={theme === 'light'? "text-secondary-600 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6": "text-white text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6"}>{member.bio}</p>
 
                 {/* Social Links */}
-                <div className="flex items-center justify-center space-x-3">
+                <div className="flex items-center justify-center space-x-2 sm:space-x-3">
                   <SocialLink 
                     href={member.social.github} 
-                    icon={<FaGithub size={18} />}
+                    icon={<FaGithub size={16} />}
                     label={`${member.name}'s GitHub`}
                   />
                   <SocialLink 
                     href={member.social.linkedin} 
-                    icon={<FaLinkedin size={18} />}
+                    icon={<FaLinkedin size={16} />}
                     label={`${member.name}'s LinkedIn`}
                   />
                   <SocialLink 
                     href={member.social.twitter} 
-                    icon={<FaTwitter size={18} />}
+                    icon={<FaTwitter size={16} />}
                     label={`${member.name}'s Twitter`}
                   />
                   <SocialLink 
                     href={`mailto:${member.social.email}`} 
-                    icon={<FaEnvelope size={16} />}
+                    icon={<FaEnvelope size={14} />}
                     label={`Email ${member.name}`}
                   />
                 </div>
@@ -189,10 +186,10 @@ const TeamSection: React.FC = () => {
           </div>
 
           {/* Join Team CTA */}
-          <motion.div variants={itemVariants} className="text-center mt-16">
-            <div className={theme === 'light'? "bg-gray-100 p-8 rounded-2xl inline-block": "dark:darkbg p-8 rounded-2xl inline-block"}>
-              <h3 className={theme === 'light'? "text-3xl font-bold text-secondary-900 mb-6": "text-3xl font-bold text-white mb-6"}>Want to Join Our Team?</h3>
-              <p className={theme === 'light'? "text-secondary-600 mb-6 max-w-xl mx-auto": "text-white mb-6 max-w-xl mx-auto" }>
+          <motion.div variants={itemVariants} className="text-center mt-12 sm:mt-16">
+            <div className={theme === 'light'? "bg-gray-100 p-6 sm:p-8 rounded-2xl inline-block": "dark:darkbg p-6 sm:p-8 rounded-2xl inline-block"}>
+              <h3 className={theme === 'light'? "text-2xl sm:text-3xl font-bold text-secondary-900 mb-4 sm:mb-6": "text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6"}>Want to Join Our Team?</h3>
+              <p className={theme === 'light'? "text-sm sm:text-base text-secondary-600 mb-4 sm:mb-6 max-w-xl mx-auto": "text-sm sm:text-base text-white mb-4 sm:mb-6 max-w-xl mx-auto" }>
                 We're always looking for passionate individuals who share our vision of 
                 building a better world through open source technology.
               </p>
@@ -205,7 +202,7 @@ const TeamSection: React.FC = () => {
                     element.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="btn-primary text-lg"
+                className="btn-primary text-base sm:text-lg min-h-[48px] px-6"
               >
                 Get In Touch
               </motion.button>
