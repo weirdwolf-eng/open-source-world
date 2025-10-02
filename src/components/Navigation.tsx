@@ -21,6 +21,7 @@ const Navigation: React.FC = () => {
 
   const navItems = [
     { name: 'About', href: '#about' },
+    { name: 'Initiatives', href: '#initiatives' },
     { name: 'Team', href: '#team' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -60,12 +61,6 @@ const Navigation: React.FC = () => {
               }`}>
                 Open Source World
             </span>
-            {/* Abbreviated on mobile */}
-            <span className={`sm:hidden font-bold text-base transition-colors ${
-                isScrolled ? 'text-gray-900' : 'text-white'
-              }`}>
-                OSW
-            </span>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -86,9 +81,6 @@ const Navigation: React.FC = () => {
             {/* Theme Toggle */}
             <button onClick={toggleTheme} aria-label="Toggle theme" className="p-2">
               {theme === "light" ? (
-                <Moon size={22} color="#a7acb5ff" />
-              ) : (
-                <Sun size={22} color="#ffffff" />
               )}
             </button>
 

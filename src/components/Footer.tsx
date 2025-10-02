@@ -25,20 +25,20 @@ const Footer = () => {
     ],
     community: [
       { name: 'Join Community', href: '#contact' },
-      { name: 'Contribute', href: 'https://github.com/oathar/open-source-world', external: true },
-      { name: 'OSK Initiative', href: '#about' },
+      { name: 'Contribute', href: 'https://github.com/theopensourceworld/open-source-world', external: true },
+      { name: 'Our Initiatives', href: '#initiatives' },
       { name: 'Newsletter', href: '#contact' }
     ],
     resources: [
-      { name: 'Documentation', href: 'https://github.com/oathar/open-source-world', external: true },
-      { name: 'GitHub', href: 'https://github.com/oathar/open-source-world', external: true },
+      { name: 'Documentation', href: 'https://github.com/theopensourceworld/open-source-world', external: true },
+      { name: 'GitHub', href: 'https://github.com/theopensourceworld/open-source-world', external: true },
       { name: 'Blog', href: '#' },
       { name: 'Events', href: '#' }
     ]
   };
 
   const socialLinks = [
-    { name: 'GitHub', icon: FaGithub, href: 'https://github.com/oathar/open-source-world' },
+    { name: 'GitHub', icon: FaGithub, href: 'https://github.com/theopensourceworld' },
     { name: 'LinkedIn', icon: FaLinkedin, href: 'https://linkedin.com/company/open-source-world' },
     { name: 'Twitter', icon: FaTwitter, href: 'https://twitter.com/opensourceworld' },
     { name: 'YouTube', icon: FaYoutube, href: 'https://youtube.com/@opensourceworld' }
