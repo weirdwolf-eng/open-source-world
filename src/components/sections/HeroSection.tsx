@@ -161,16 +161,8 @@ const HeroSection: React.FC = () => {
                 boxShadow: "0 20px 40px rgba(255,255,255,0.2)",
               }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => scrollToSection("#contact")}
-              className={`bg-transparent border-2 border-white text-white 
-              hover:bg-white hover:text-[#073f70] 
-              font-bold py-4 px-8 rounded-2xl transition-all duration-300 text-lg
-              ${
-                theme === "dark"
-                  ? "border-blue-100 text-blue-900 hover:bg-[#041f3d] hover:text-[#041f3d]"
-                  : ""
-              }
-            `}>
+              onClick={() => window.open("https://discord.gg/gEHBwfDX", "_blank")}
+              className="bg-transparent border-2 border-white text-white hover:bg-indigo-600 hover:border-indigo-600 font-bold py-4 px-8 rounded-2xl transition-all duration-300 text-lg">
               Join Community
             </motion.button>
           </motion.div>
