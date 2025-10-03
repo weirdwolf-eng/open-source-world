@@ -91,7 +91,7 @@ const HeroSection: React.FC = () => {
           <motion.div
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
-            className='w-24 h-24 bg-gradient-to-br from-[#3b9df0] to-[#1f84d6] rounded-xl flex items-center justify-center mx-auto mt-12 mb-6 shadow-lg cursor-pointer'>
+            className='w-24 h-24 bg-gradient-to-br from-[#3b9df0] to-[#1f84d6] rounded-xl flex items-center justify-center mx-auto mt-20 mb-6 shadow-lg cursor-pointer'>
             <FaGlobe size={64} className='text-white' />
           </motion.div>
 
